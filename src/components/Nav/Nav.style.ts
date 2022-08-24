@@ -5,6 +5,7 @@ export const Nav = styled.nav`
   /* max-width: 500px; */
   padding: 16px 56px 0 56px;
   background-color: ${({ theme }) => theme.color.white};
+  margin: 0;
 
   > a {
     width: 50%;
