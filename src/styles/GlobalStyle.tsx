@@ -24,11 +24,20 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    /* background-color: lightgray; */
+    background-color: ${({ theme }) => theme.color.lightBlue};
   }
   
   body > div {
     width: 100%;
-    max-width: 500px;
+    /* max-width: 500px; */
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   a {
@@ -40,8 +49,9 @@ const GlobalStyle = createGlobalStyle`
   button,
   textarea {
     font-family: 'GmarketSansMedium', sans-serif;
-    background-color: transparent;
+    background-color: #ffffff;
     border: none;
+    border-radius: 2px;
     outline: none;
 
     /* :-webkit-autofill,
