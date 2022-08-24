@@ -1,12 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import HomePage from '../pages/HomePage';
+import { Header } from '../components/Header';
+import { Nav } from '../components/Nav';
+import NamePage from '../pages/Main/NamePage';
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Header />
+      <Nav />
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path='/name' element={<NamePage />} />
+        <Route path='*' element={<div>Error!!!</div>} />
       </Routes>
     </BrowserRouter>
   );
