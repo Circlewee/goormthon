@@ -2,12 +2,13 @@ import * as SC from './Input.style';
 
 interface InputProps {
   id: string;
-  width?: number;
+  name: string;
   placeholder: string;
+  width?: number;
 }
 
-const Input = ({ id, width, placeholder }: InputProps) => {
-  return <SC.Input id={id} placeholder={placeholder} width={width} />;
+const Input = ({ id, name, placeholder, width }: InputProps) => {
+  return <SC.Input id={id} name={name} placeholder={placeholder} width={width} />;
 };
 
 export default Input;
