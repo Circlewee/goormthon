@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Header } from '../components/Header';
 import { Nav } from '../components/Nav';
-import NamePage from '../pages/Main/NamePage';
+import NamePage from '../pages/NamePage/NamePage';
 
 const Router = () => {
   return (
