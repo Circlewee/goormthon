@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import * as SC from './SelectBox.style';
+import { dropIcon } from '../../../assets';
 
 interface SelectBoxProps {
   dataList: string[];
@@ -41,7 +42,7 @@ const SelectBox = ({ dataList, type, userData, setUserData }: SelectBoxProps) =>
   return (
     <SC.Wrapper onClick={handleSelectBoxShow} isShow={isShow} disabled={isDisabled}>
       <SC.SelectedText isInit={userData[type] === '선택'}>{userData[type]}</SC.SelectedText>
-      <SC.DropDownImg src='./assets/imgs/drop_icon.png' isShow={isShow} />
+      <SC.DropDownImg src={dropIcon} isShow={isShow} />
       {isShow && (
         <SC.DropDownBox>
           {dataList.map((data) => (

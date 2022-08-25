@@ -6,7 +6,14 @@ const customAxios = axios.create({
 
 export const postTransfer = async (meanArray: string[]) => {
   const data = await customAxios.post('/transfer', meanArray);
-  console.log(data);
+
+  return data;
+};
+
+export const postBirthTransfer = async (birthday: number[]) => {
+  const data = await customAxios.post('/birthtransfer', birthday);
+
+  return data;
 };
 
 export default customAxios;

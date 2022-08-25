@@ -1,6 +1,6 @@
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import * as SC from './NamePage.style';
 import { Label } from '../../components/Form/Label';
@@ -45,7 +45,7 @@ const NamePage = () => {
       isCorrect: true,
     });
 
-    console.log(await postTransfer(meanArray));
+    const response = await postTransfer(meanArray);
   };
 
   const handleInputAdd = () => {

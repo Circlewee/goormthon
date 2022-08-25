@@ -5,6 +5,7 @@ import * as SC from './BirthdayPage.style';
 import { Label } from '../../components/Form/Label';
 import { SelectBox } from '../../components/Form/SelectBox';
 import getDateList from '../../utils/getDateList';
+import { postBirthTransfer } from '../../api/api';
 
 const BirthdayPage = () => {
   const [userData, setUserData] = useState({ month: '선택', date: '선택' });
@@ -30,8 +31,13 @@ const BirthdayPage = () => {
     }));
   }, [userData.month]);
 
-  const handleClick = () => {
-    console.log(1);
+  const handleClick = async () => {
+    const birthday = [];
+
+    birthday.push(Number(userData.month.split('월')[0]));
+    birthday.push(Number(userData.date.split('일')[0]));
+
+    console.log(await postBirthTransfer(birthday));
   };
 
   return (

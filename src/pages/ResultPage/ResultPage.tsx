@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import * as SC from './ResultPage.style';
 import { requestStateAtom } from '../../atom/atom';
 import useToast from '../../hooks/useToast';
+import { Instagram, Kakao, saveIcon } from '../../assets';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
@@ -50,27 +51,39 @@ const ResultPage = () => {
     exportComponentAsPNG(exportImgRef, { fileName: 'JejuIleum' });
   };
 
+  const handleRestart = () => {
+    navigate('/name', { replace: true });
+  };
+
   useEffect(() => {
-    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    // window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
   }, []);
 
   return (
-    <div
-      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}
-    >
+    <SC.Container>
       <SC.Wrapper>
         <SC.ResultTitle>번역을 완성했어요!</SC.ResultTitle>
-        <SC.ImageContainer ref={exportImgRef}>
-          <SC.BackgroundImg src='https://cdn-icons-png.flaticon.com/512/1163/1163624.png' />
-        </SC.ImageContainer>
-        <SC.SaveButton onClick={handleExportPNG}>이미지 저장</SC.SaveButton>
-        <SC.ShareText>친구들에게 내 제주 이름을 공유해요</SC.ShareText>
+
+        <SC.ResultContainer ref={exportImgRef}>
+          <SC.SubTitle>OOO님의 제주도 이름은</SC.SubTitle>
+          <SC.Title>OOOOO</SC.Title>
+        </SC.ResultContainer>
+
+        <SC.SaveButton onClick={handleExportPNG}>
+          이미지 저장
+          <img src={saveIcon} />
+        </SC.SaveButton>
+        <SC.ShareText>
+          친구들에게 <strong>제주일름</strong> 알려주기
+        </SC.ShareText>
         <SC.ShareButtonContainer>
           <a href='https://www.instagram.com/'>
-            <SC.ShareButton>인스타</SC.ShareButton>
+            <SC.ShareButton color='#FF3981'>
+              <Instagram />
+            </SC.ShareButton>
           </a>
-          <SC.ShareButton onClick={handleKakaoShare} id='kakaoButton'>
-            카카오
+          <SC.ShareButton onClick={handleKakaoShare} id='kakaoButton' color='#FDBA0E;'>
+            <Kakao />
           </SC.ShareButton>
           <FacebookShareButton url={process.env.REACT_APP_SERVICE_URL}>
             <FacebookIcon size={64} round />
@@ -79,8 +92,9 @@ const ResultPage = () => {
             <TwitterIcon size={64} round />
           </TwitterShareButton>
         </SC.ShareButtonContainer>
+        <SC.RestartButton onClick={handleRestart}>다시 만들기</SC.RestartButton>
       </SC.Wrapper>
-    </div>
+    </SC.Container>
   );
 };
 

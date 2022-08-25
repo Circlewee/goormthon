@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.color.lightBlue};
+`;
+
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 500px;
@@ -9,18 +17,41 @@ export const Wrapper = styled.div`
 export const ResultTitle = styled.h1`
   font-family: ${({ theme }) => theme.font.bold}, sans-serif;
   color: #ffffff;
-  font-size: 20px;
-  line-height: 42px;
   text-align: center;
+  font-size: 30px;
+  line-height: 34px;
 `;
 
-export const ImageContainer = styled.div`
+export const ResultContainer = styled.div`
   position: relative;
   width: 100%;
   height: 0;
   margin-top: 25px;
   padding-top: 100%;
   background-color: #ffffff;
+
+  > * {
+    position: absolute;
+  }
+`;
+
+export const SubTitle = styled.h2`
+  top: 40px;
+  left: 50%;
+  margin: 0;
+  color: #666666;
+  font-size: 16px;
+  line-height: 20px;
+  transform: translate(-50%, 0);
+`;
+
+export const Title = styled.h1`
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  font-size: 34px;
+  line-height: 38px;
+  transform: translate(-50%, -50%);
 `;
 
 export const BackgroundImg = styled.img`
@@ -35,20 +66,32 @@ export const SaveButton = styled.button`
   width: 100%;
   height: 70px;
   padding: 15px 0;
-  background-color: ${({ theme }) => theme.color.darkBlue};
+  background-color: #445982;
   color: #ffffff;
   font-size: 22px;
   line-height: 42px;
   letter-spacing: -0.02em;
+
+  > img {
+    display: inline-block;
+    width: 30px;
+    height: auto;
+    margin-left: 7px;
+    vertical-align: middle;
+  }
 `;
 
 export const ShareText = styled.p`
   margin-top: 20px;
   text-align: center;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 19px;
   line-height: 42px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
+
+  strong {
+    font-family: 'GmarketSansBold', sans-serif;
+  }
 `;
 
 export const ShareButtonContainer = styled.div`
@@ -56,13 +99,29 @@ export const ShareButtonContainer = styled.div`
   justify-content: center;
 
   button:not(:first-child) {
-    margin-left: 10px;
+    margin-left: 15px;
   }
 `;
 
-export const ShareButton = styled.button`
+export const ShareButton = styled.button<{ color: string }>`
+  display: flex;
   width: 62px;
   height: 62px;
   border-radius: 50%;
-  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ color }) => color};
+`;
+
+export const RestartButton = styled.button`
+  width: 100%;
+  height: 65px;
+  margin: 20px 0;
+  border-radius: 88px;
+  background-color: ${({ theme }) => theme.color.orange};
+  color: #ffffff;
+  font-family: 'GmarketSansBold', sans-serif;
+  font-size: 26px;
+  line-height: 26px;
+  letter-spacing: -0.02em;
 `;
