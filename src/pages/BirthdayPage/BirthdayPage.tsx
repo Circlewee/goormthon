@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 import { RemoveScrollBar } from 'react-remove-scroll-bar';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
 import * as SC from './BirthdayPage.style';
 import { Label } from '../../components/Form/Label';
 import { SelectBox } from '../../components/Form/SelectBox';
 import getDateList from '../../utils/getDateList';
+import { requestStateAtom } from 'src/atom/atom';
 import { postBirthTransfer } from '../../api/api';
+import useToast from 'src/hooks/useToast';
 
 const BirthdayPage = () => {
   const [userData, setUserData] = useState({ month: '선택', date: '선택' });
+  const [requestState, setRequestState] = useRecoilState(requestStateAtom);
   const monthList = [
     '1월',
     '2월',
@@ -23,6 +28,8 @@ const BirthdayPage = () => {
     '11월',
     '12월',
   ];
+  const navigate = useNavigate();
+  const toast = useToast();
 
   useEffect(() => {
     setUserData((prevState) => ({
@@ -34,10 +41,21 @@ const BirthdayPage = () => {
   const handleClick = async () => {
     const birthday = [];
 
+    if (userData.month === '선택' || userData.date === '선택') {
+      return toast.error('생년 월일을 입력해주세요');
+    }
+
     birthday.push(Number(userData.month.split('월')[0]));
     birthday.push(Number(userData.date.split('일')[0]));
 
-    console.log(await postBirthTransfer(birthday));
+    setRequestState({
+      firstName: userData.date,
+      lastName: userData.month,
+      isCorrect: true,
+    });
+
+    const response = await postBirthTransfer(birthday);
+    navigate('/result', { state: { data: response.data, endpoint: 'birthday' } });
   };
 
   return (

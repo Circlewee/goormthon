@@ -58,14 +58,18 @@ const ResultPage = () => {
   };
 
   const handleRestart = () => {
-    navigate('/name', { replace: true });
+    // navigate('/name', { replace: true });
+    window.location.href = process.env.REACT_APP_SERVICE_URL;
   };
 
   useEffect(() => {
     window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-    const a = getResultImages(state.endpoint);
-    console.log(a.imgB);
-    setResultImage(a);
+    setResultImage(
+      getResultImages(state.endpoint, {
+        month: Number(requestState.lastName.split('월')[0]) - 1,
+        date: Number(requestState.lastName.split('일')[0]),
+      })
+    );
   }, []);
 
   return (
