@@ -5,5 +5,7 @@ export const Input = styled.input<{ width?: number }>`
   width: ${({ width }) => (width ? `${width}px` : '100%')};
   height: 53px;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 22px;
+  line-height: 22px;
+  border-radius: 0px 5px 5px 5px;
 `;

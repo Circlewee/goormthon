@@ -7,6 +7,7 @@ import { Label } from '../../components/Form/Label';
 import { Input } from '../../components/Form/Input';
 import useToast from '../../hooks/useToast';
 import { requestStateAtom } from '../../atom/atom';
+import { postTransfer } from '../,./../../api/api';
 
 type FormType = {
   name: {
@@ -31,7 +32,7 @@ const NamePage = () => {
     control,
   });
 
-  const submitAction = (data: FormType) => {
+  const submitAction = async (data: FormType) => {
     const meanArray = data.name.map((name) => name.mean);
 
     if (!meanArray[0]) {
@@ -44,7 +45,7 @@ const NamePage = () => {
       isCorrect: true,
     });
 
-    console.log(meanArray);
+    console.log(await postTransfer(meanArray));
   };
 
   const handleInputAdd = () => {
@@ -88,25 +89,24 @@ const NamePage = () => {
             <Input id='firstName' placeholder='이름' onChange={handleNameChange.firstNameChange} />
           </div>
         </SC.RealNameContainer>
+        <SC.DivideLine />
         <SC.Form onSubmit={handleSubmit(submitAction)}>
           <SC.ExplanationText>
-            이름의 의미를 동사로 작성해주세요.
-            <br />
-            (빛날)희 (착할)선 &gt; 빛나다, 착하다
+            이름의 <strong>의미</strong>를 문장으로 작성해주세요.
           </SC.ExplanationText>
           {fields.map((field, index) => {
             return (
               <SC.NameMeanContainer key={field.id}>
-                <Label htmlFor={`meanInput${index}`}>{index + 1}번째 의미</Label>
+                <Label htmlFor={`meanInput${index}`}>의미 {index + 1}</Label>
                 <SC.InputWrapper>
                   <Input
                     id={`meanInput${index}`}
-                    placeholder='착하다'
+                    placeholder='예) 빛나다, 착한 등'
                     register={register(`name.${index}.mean` as const)}
                   />
                   {fields.length !== 1 && index === fields.length - 1 && (
                     <SC.DeleteButton type='button' onClick={handleInputDelete(index)}>
-                      -
+                      삭제
                     </SC.DeleteButton>
                   )}
                 </SC.InputWrapper>
@@ -114,9 +114,9 @@ const NamePage = () => {
             );
           })}
           <SC.AddInputButton type='button' onClick={handleInputAdd}>
-            의미 추가
+            의미 추가하기
           </SC.AddInputButton>
-          <SC.SubmitButton type='submit'>제주 이름 생성</SC.SubmitButton>
+          <SC.SubmitButton type='submit'>제주일름 만들기</SC.SubmitButton>
         </SC.Form>
       </SC.Wrapper>
     </div>
