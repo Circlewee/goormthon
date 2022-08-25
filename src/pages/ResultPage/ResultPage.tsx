@@ -10,16 +10,16 @@ import useToast from '../../hooks/useToast';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
-  const abc = useRecoilValue(requestStateAtom);
+  const requestState = useRecoilValue(requestStateAtom);
   const navigate = useNavigate();
   const toast = useToast();
 
   useEffect(() => {
-    if (!abc.isCorrect) {
+    if (!requestState.isCorrect) {
       navigate('/name');
       toast.error('먼저 이름과 이름의 의미를 입력해주세요!');
     }
-  }, [abc.isCorrect]);
+  }, [requestState.isCorrect]);
 
   const handleKakaoShare = () => {
     window.Kakao.Share.sendDefault({
