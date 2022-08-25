@@ -21,7 +21,7 @@ const ResultPage = () => {
     }
   }, [abc.isCorrect]);
 
-  const handleSNSShare = () => {
+  const handleKakaoShare = () => {
     window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
@@ -30,16 +30,16 @@ const ResultPage = () => {
         imageUrl:
           'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
         link: {
-          mobileWebUrl: 'http://localhost:3000',
-          webUrl: 'http://localhost:3000',
+          mobileWebUrl: process.env.REACT_APP_SERVICE_URL,
+          webUrl: process.env.REACT_APP_SERVICE_URL,
         },
       },
       buttons: [
         {
           title: '만들러 가보기',
           link: {
-            mobileWebUrl: 'http://localhost:3000',
-            webUrl: 'http://localhost:3000',
+            mobileWebUrl: process.env.REACT_APP_SERVICE_URL,
+            webUrl: process.env.REACT_APP_SERVICE_URL,
           },
         },
       ],
@@ -47,7 +47,7 @@ const ResultPage = () => {
   };
 
   const handleExportPNG = () => {
-    exportComponentAsPNG(exportImgRef, { fileName: '변경해야함' });
+    exportComponentAsPNG(exportImgRef, { fileName: 'JejuIleum' });
   };
 
   useEffect(() => {
@@ -69,13 +69,13 @@ const ResultPage = () => {
           <a href='https://www.instagram.com/'>
             <SC.ShareButton>인스타</SC.ShareButton>
           </a>
-          <SC.ShareButton onClick={handleSNSShare} id='kakaoButton'>
+          <SC.ShareButton onClick={handleKakaoShare} id='kakaoButton'>
             카카오
           </SC.ShareButton>
-          <FacebookShareButton url='http://localhost:3000'>
+          <FacebookShareButton url={process.env.REACT_APP_SERVICE_URL}>
             <FacebookIcon size={64} round />
           </FacebookShareButton>
-          <TwitterShareButton url='http://localhost:3000'>
+          <TwitterShareButton url={process.env.REACT_APP_SERVICE_URL}>
             <TwitterIcon size={64} round />
           </TwitterShareButton>
         </SC.ShareButtonContainer>
