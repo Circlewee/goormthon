@@ -33,7 +33,7 @@ export const ExplanationText = styled.p`
   height: 50px;
   margin: 20px 0 0 0;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 21px;
   letter-spacing: -0.02em;
   text-align: center;

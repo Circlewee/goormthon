@@ -11,8 +11,39 @@ interface InputProps {
 }
 
 const Input = ({ id, placeholder, width, register, onChange }: InputProps) => {
+  // const [isButtonShow, setIsButtonShow] = useState(false);
+  // const [inputValue, setInputValue] = useState('');
+
+  // const handleClick = () => {
+  // setInputValue('');
+  // };
+
+  // const handleFocus = () => {
+  //   setIsButtonShow(true);
+  // };
+
+  // const handleBlur = () => {
+  //   setIsButtonShow(false);
+  // };
+
   return (
-    <SC.Input id={id} placeholder={placeholder} width={width} onChange={onChange} {...register} />
+    <div style={{ position: 'relative', width: '100%' }}>
+      <SC.Input
+        id={id}
+        placeholder={placeholder}
+        width={width}
+        onChange={onChange}
+        type='text'
+        {...register}
+        // onFocus={handleFocus}
+        // onBlur={handleBlur}
+      />
+      {/* {isButtonShow && (
+        <SC.DeleteButton type='button' onClick={handleClick}>
+          <img src='./assets/imgs/x_icon.png' />
+        </SC.DeleteButton>
+      )} */}
+    </div>
   );
 };
 
