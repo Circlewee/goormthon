@@ -1,6 +1,6 @@
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import * as SC from './NamePage.style';
 import { Label } from '../../components/Form/Label';
@@ -80,7 +80,7 @@ const NamePage = () => {
             <Input
               id='lastName'
               placeholder='성'
-              width={98}
+              width={102}
               onChange={handleNameChange.lastNameChange}
             />
           </div>
