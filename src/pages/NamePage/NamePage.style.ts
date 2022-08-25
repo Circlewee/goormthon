@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.main`
+  width: 100%;
   max-width: 500px;
   padding: 0 30px;
   background-color: ${({ theme }) => theme.color.lightBlue};

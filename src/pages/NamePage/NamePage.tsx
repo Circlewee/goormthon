@@ -3,6 +3,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import * as SC from './NamePage.style';
 import { Label } from '../../components/Form/Label';
 import { Input } from '../../components/Form/Input';
+import useToast from '../../hooks/useToast';
 
 type FormType = {
   name: {
@@ -11,13 +12,8 @@ type FormType = {
 };
 
 const NamePage = () => {
-  // const [firstInput, setFirstInput] = useState('');
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormType>({
+  const toast = useToast();
+  const { register, control, handleSubmit } = useForm<FormType>({
     mode: 'onChange',
     defaultValues: {
       name: [{ mean: '' }, { mean: '' }],
@@ -31,6 +27,10 @@ const NamePage = () => {
 
   const abc = (data: FormType) => {
     const meanArray = data.name.map((name) => name.mean);
+
+    if (!meanArray[0]) {
+      return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
+    }
 
     console.log(meanArray);
   };
@@ -72,11 +72,8 @@ const NamePage = () => {
                   <Input
                     id={`meanInput${index}`}
                     placeholder='착하다'
-                    register={register(`name.${index}.mean` as const, {
-                      required: index === 0 && true,
-                    })}
+                    register={register(`name.${index}.mean` as const)}
                   />
-                  {errors.name?.message && <div>필수입력</div>}
                   {fields.length !== 1 && index === fields.length - 1 && (
                     <SC.DeleteButton type='button' onClick={handleInputDelete(index)}>
                       -

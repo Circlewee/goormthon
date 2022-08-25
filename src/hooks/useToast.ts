@@ -9,6 +9,7 @@ const useToast = () => {
     pauseOnHover: false,
     draggable: false,
     progress: undefined,
+    theme: 'dark',
   };
 
   const success = (message: string) => {

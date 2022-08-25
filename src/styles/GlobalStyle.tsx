@@ -24,8 +24,6 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* background-color: lightgray; */
     background-color: ${({ theme }) => theme.color.lightBlue};
   }
   
@@ -33,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     /* max-width: 500px; */
 
-    > div {
+    > div:not(:first-child) {
       display: flex;
       justify-content: center;
       align-items: center;
