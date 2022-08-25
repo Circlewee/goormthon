@@ -1,19 +1,24 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { exportComponentAsPNG } from 'react-component-export-image';
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 import { useRecoilValue } from 'recoil';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import * as SC from './ResultPage.style';
 import { requestStateAtom } from '../../atom/atom';
 import useToast from '../../hooks/useToast';
-import { Instagram, Kakao, saveIcon } from '../../assets';
+import { saveIcon, staticLogo } from '../../assets';
+import { Instagram, Kakao } from '../../assets/svg';
+import getResultImages from 'src/utils/getResultImages';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
   const requestState = useRecoilValue(requestStateAtom);
   const navigate = useNavigate();
   const toast = useToast();
+  const location = useLocation();
+  const state = location.state as { data: string; endpoint: 'name' | 'birthday' };
+  const [resultImage, setResultImage] = useState({ background: '', imgT: '', imgB: '' });
 
   useEffect(() => {
     if (!requestState.isCorrect) {
@@ -28,8 +33,7 @@ const ResultPage = () => {
       content: {
         title: '제주오름',
         description: '내 이름을 제주 방언으로 해석해보자!',
-        imageUrl:
-          'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+        imageUrl: staticLogo,
         link: {
           mobileWebUrl: process.env.REACT_APP_SERVICE_URL,
           webUrl: process.env.REACT_APP_SERVICE_URL,
@@ -48,7 +52,9 @@ const ResultPage = () => {
   };
 
   const handleExportPNG = () => {
-    exportComponentAsPNG(exportImgRef, { fileName: 'JejuIleum' });
+    exportComponentAsPNG(exportImgRef, {
+      fileName: `${requestState.lastName + requestState.firstName}_JejuIleum`,
+    });
   };
 
   const handleRestart = () => {
@@ -56,7 +62,10 @@ const ResultPage = () => {
   };
 
   useEffect(() => {
-    // window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    const a = getResultImages(state.endpoint);
+    console.log(a.imgB);
+    setResultImage(a);
   }, []);
 
   return (
@@ -65,8 +74,15 @@ const ResultPage = () => {
         <SC.ResultTitle>번역을 완성했어요!</SC.ResultTitle>
 
         <SC.ResultContainer ref={exportImgRef}>
-          <SC.SubTitle>OOO님의 제주도 이름은</SC.SubTitle>
-          <SC.Title>OOOOO</SC.Title>
+          <SC.SubTitleWrapper>
+            <SC.SubTitle>{requestState.lastName + requestState.firstName}님의</SC.SubTitle>
+            <SC.SubTitle>제주도 이름은</SC.SubTitle>
+          </SC.SubTitleWrapper>
+          <SC.Title>{state.data}</SC.Title>
+          <SC.BackgroundImg src={resultImage.background} index={1} />
+          <SC.BackgroundImg src={resultImage.imgT} index={2} />
+          <SC.BackgroundImg src={resultImage.imgB} index={3} />
+          <SC.BackgroundImg src={staticLogo} index={4} />
         </SC.ResultContainer>
 
         <SC.SaveButton onClick={handleExportPNG}>

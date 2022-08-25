@@ -4,8 +4,8 @@ const customAxios = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-export const postTransfer = async (meanArray: string[]) => {
-  const data = await customAxios.post('/transfer', meanArray);
+export const postTransfer = async (meanArray: string[]): Promise<{ data: string }> => {
+  const data = await customAxios.post<string>('/transfer', meanArray);
 
   return data;
 };

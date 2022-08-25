@@ -1,6 +1,7 @@
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import * as SC from './NamePage.style';
 import { Label } from '../../components/Form/Label';
@@ -19,6 +20,7 @@ const NamePage = () => {
   const toast = useToast();
   const [nameState, setNameState] = useState({ firstName: '', lastName: '' });
   const [requestState, setRequestState] = useRecoilState(requestStateAtom);
+  const navigate = useNavigate();
 
   const { register, control, handleSubmit } = useForm<FormType>({
     mode: 'onChange',
@@ -35,6 +37,10 @@ const NamePage = () => {
   const submitAction = async (data: FormType) => {
     const meanArray = data.name.map((name) => name.mean);
 
+    if (!nameState.firstName || !nameState.lastName) {
+      return toast.error('본명을 입력해주세요.');
+    }
+
     if (!meanArray[0]) {
       return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
     }
@@ -46,6 +52,7 @@ const NamePage = () => {
     });
 
     const response = await postTransfer(meanArray);
+    navigate('/result', { state: { data: response.data, endpoint: 'name' } });
   };
 
   const handleInputAdd = () => {

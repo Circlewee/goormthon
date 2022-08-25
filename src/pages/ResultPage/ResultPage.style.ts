@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -35,14 +35,23 @@ export const ResultContainer = styled.div`
   }
 `;
 
-export const SubTitle = styled.h2`
+export const SubTitleWrapper = styled.div`
   top: 40px;
   left: 50%;
+  z-index: 99;
+`;
+
+export const SubTitle = styled.h2`
   margin: 0;
   color: #666666;
   font-size: 16px;
   line-height: 20px;
+  text-align: center;
   transform: translate(-50%, 0);
+
+  & + & {
+    margin-top: 2px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -52,14 +61,40 @@ export const Title = styled.h1`
   font-size: 34px;
   line-height: 38px;
   transform: translate(-50%, -50%);
+  z-index: 99;
 `;
 
-export const BackgroundImg = styled.img`
+export const BackgroundImg = styled.img<{ index: number }>`
   position: absolute;
-  width: 50px;
+  width: 100%;
   height: auto;
-  top: 0;
-  left: 0;
+
+  ${({ index }) => {
+    switch (index) {
+      case 1:
+        return css`
+          top: 0;
+          left: 0;
+        `;
+      case 2:
+        return css`
+          top: 0;
+          right: 0;
+        `;
+      case 3:
+        return css`
+          bottom: 0;
+          left: 0;
+        `;
+      case 4:
+        return css`
+          bottom: 20px;
+          left: 50%;
+          width: 76px;
+          transform: translateX(-50%);
+        `;
+    }
+  }}
 `;
 
 export const SaveButton = styled.button`
