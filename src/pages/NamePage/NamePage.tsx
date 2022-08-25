@@ -1,9 +1,12 @@
 import { useForm, useFieldArray } from 'react-hook-form';
+import { useRecoilState } from 'recoil';
+import React, { useState } from 'react';
 
 import * as SC from './NamePage.style';
 import { Label } from '../../components/Form/Label';
 import { Input } from '../../components/Form/Input';
 import useToast from '../../hooks/useToast';
+import { requestStateAtom } from '../../atom/atom';
 
 type FormType = {
   name: {
@@ -13,6 +16,9 @@ type FormType = {
 
 const NamePage = () => {
   const toast = useToast();
+  const [nameState, setNameState] = useState({ firstName: '', lastName: '' });
+  const [requestState, setRequestState] = useRecoilState(requestStateAtom);
+
   const { register, control, handleSubmit } = useForm<FormType>({
     mode: 'onChange',
     defaultValues: {
@@ -25,12 +31,18 @@ const NamePage = () => {
     control,
   });
 
-  const abc = (data: FormType) => {
+  const submitAction = (data: FormType) => {
     const meanArray = data.name.map((name) => name.mean);
 
     if (!meanArray[0]) {
       return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
     }
+
+    setRequestState({
+      firstName: nameState.firstName,
+      lastName: nameState.lastName,
+      isCorrect: true,
+    });
 
     console.log(meanArray);
   };
@@ -45,20 +57,38 @@ const NamePage = () => {
     };
   };
 
+  const handleNameChange = {
+    firstNameChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNameState((prevState) => {
+        return { ...prevState, firstName: e.target.value };
+      });
+    },
+    lastNameChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNameState((prevState) => {
+        return { ...prevState, lastName: e.target.value };
+      });
+    },
+  };
+
   return (
     <div>
       <SC.Wrapper>
         <SC.RealNameContainer>
           <div>
             <Label htmlFor='lastName'>성</Label>
-            <Input id='lastName' placeholder='성' width={98} />
+            <Input
+              id='lastName'
+              placeholder='성'
+              width={98}
+              onChange={handleNameChange.lastNameChange}
+            />
           </div>
           <div>
             <Label htmlFor='firstName'>이름</Label>
-            <Input id='firstName' placeholder='이름' />
+            <Input id='firstName' placeholder='이름' onChange={handleNameChange.firstNameChange} />
           </div>
         </SC.RealNameContainer>
-        <SC.Form onSubmit={handleSubmit(abc)}>
+        <SC.Form onSubmit={handleSubmit(submitAction)}>
           <SC.ExplanationText>
             이름의 의미를 동사로 작성해주세요.
             <br />

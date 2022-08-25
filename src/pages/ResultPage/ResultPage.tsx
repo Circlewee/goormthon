@@ -1,12 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { exportComponentAsPNG } from 'react-component-export-image';
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
+import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 
 import * as SC from './ResultPage.style';
-import { useRef } from 'react';
+import { requestStateAtom } from '../../atom/atom';
+import useToast from '../../hooks/useToast';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
+  const abc = useRecoilValue(requestStateAtom);
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  useEffect(() => {
+    if (!abc.isCorrect) {
+      navigate('/name');
+      toast.error('먼저 이름과 이름의 의미를 입력해주세요!');
+    }
+  }, [abc.isCorrect]);
 
   const handleSNSShare = () => {
     window.Kakao.Share.sendDefault({
@@ -17,16 +30,16 @@ const ResultPage = () => {
         imageUrl:
           'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
         link: {
-          mobileWebUrl: 'https://developers.kakao.com',
-          webUrl: 'https://developers.kakao.com',
+          mobileWebUrl: 'http://localhost:3000',
+          webUrl: 'http://localhost:3000',
         },
       },
       buttons: [
         {
           title: '만들러 가보기',
           link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
+            mobileWebUrl: 'http://localhost:3000',
+            webUrl: 'http://localhost:3000',
           },
         },
       ],
