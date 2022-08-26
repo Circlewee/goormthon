@@ -36,7 +36,7 @@ export const ResultContainer = styled.div`
 `;
 
 export const SubTitleWrapper = styled.div`
-  top: 40px;
+  top: 90px;
   left: 50%;
   z-index: 99;
 `;
@@ -44,8 +44,9 @@ export const SubTitleWrapper = styled.div`
 export const SubTitle = styled.h2`
   margin: 0;
   color: #666666;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 22px;
+  line-height: 24px;
+  font-weight: 100;
   text-align: center;
   transform: translate(-50%, 0);
 
@@ -57,9 +58,12 @@ export const SubTitle = styled.h2`
 export const Title = styled.h1`
   top: 50%;
   left: 50%;
+  width: 100%;
   margin: 0;
-  font-size: 34px;
-  line-height: 38px;
+  padding: 0 10%;
+  text-align: center;
+  font-size: 42px;
+  line-height: 45px;
   transform: translate(-50%, -50%);
   z-index: 99;
 `;
@@ -90,7 +94,7 @@ export const BackgroundImg = styled.img<{ index: number }>`
         return css`
           bottom: 20px;
           left: 50%;
-          width: 76px;
+          width: 106px;
           transform: translateX(-50%);
         `;
     }

@@ -33,7 +33,8 @@ const ResultPage = () => {
       content: {
         title: '제주오름',
         description: '내 이름을 제주 방언으로 해석해보자!',
-        imageUrl: staticLogo,
+        imageUrl:
+          'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4c2e05e1-1203-44ba-add9-51e6e17072ce/KakaoTalk_20220826_111424195.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220826%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220826T021523Z&X-Amz-Expires=86400&X-Amz-Signature=0ec5a2cc26f17f409dc7e5a4c1ae0b463a73841aaf1e91c45bcd1ba42e1e5d77&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22KakaoTalk_20220826_111424195.png%22&x-id=GetObject',
         link: {
           mobileWebUrl: process.env.REACT_APP_SERVICE_URL,
           webUrl: process.env.REACT_APP_SERVICE_URL,
@@ -79,7 +80,10 @@ const ResultPage = () => {
 
         <SC.ResultContainer ref={exportImgRef}>
           <SC.SubTitleWrapper>
-            <SC.SubTitle>{requestState.lastName + requestState.firstName}님의</SC.SubTitle>
+            <SC.SubTitle>
+              {requestState.lastName + requestState.firstName}
+              {state.endpoint === 'name' ? '님의' : '의'}
+            </SC.SubTitle>
             <SC.SubTitle>제주도 이름은</SC.SubTitle>
           </SC.SubTitleWrapper>
           <SC.Title>{state.data}</SC.Title>
