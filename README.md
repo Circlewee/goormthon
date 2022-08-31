@@ -1,16 +1,10 @@
-<div align="end">
-  <a href="https://hits.seeyoufarm.com">
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCirclewee%2Fjejuileum&count_bg=%23FF7100&title_bg=%23001B6C&title=visitors&edge_flat=false"/>
-  </a>
-</div>
-
 ## 🍊제주일름
 
-### 🍊배포 링크
+### 배포 링크
 
 [제주일름](http://jejuileum.kro.kr)
 
-## 서비스 소개
+## 🍊서비스 소개
 
 #### 🎉구름톤 in Jeju 대상 수상🎉
 
@@ -23,7 +17,7 @@
 
 ### 결과 화면
 
-## 팀 소개
+## 🍊팀 소개
 
 | 팀원 이름 | 포지션     |
 | --------- | ---------- |
@@ -34,7 +28,7 @@
 
 ---
 
-## Usage
+## 🍊Usage
 
 ### Install
 
@@ -62,7 +56,7 @@ yarn build
 
 ---
 
-## 추후 계획
+## 🍊추후 계획
 
 1. Next.js로 마이그레이션
 2. FOUC 해결
