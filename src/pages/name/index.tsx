@@ -8,7 +8,7 @@ import { Label } from '../../components/Form/Label';
 import { Input } from '../../components/Form/Input';
 import useToast from '../../hooks/useToast';
 import { requestStateAtom } from '../../atom/atom';
-import { postTransfer } from '../,./../../api/api';
+import { postTransfer } from '../../api/api';
 
 type FormType = {
   name: {
