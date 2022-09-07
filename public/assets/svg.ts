@@ -1,2 +1,4 @@
-export { ReactComponent as Instagram } from './imgs/instagram_icon.svg';
-export { ReactComponent as Kakao } from './imgs/kakao_icon.svg';
+import Instagram from './imgs/instagram_icon.svg';
+import Kakao from './imgs/kakao_icon.svg';
+
+export { Instagram, Kakao };
