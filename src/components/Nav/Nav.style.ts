@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Nav = styled.nav`
+  display: flex;
   width: 100%;
   max-width: 500px;
   padding: 56px 30px 0 30px;
