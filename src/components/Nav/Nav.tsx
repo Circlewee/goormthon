@@ -9,10 +9,10 @@ const Nav = () => {
   return (
     <SC.Wrapper>
       <SC.Nav>
-        <Link href='/name'>
+        <Link href='/name' scroll={false}>
           <SC.LinkButton selected={router.asPath === '/name'}>이름</SC.LinkButton>
         </Link>
-        <Link href='/birthday'>
+        <Link href='/birthday' scroll={false}>
           <SC.LinkButton selected={router.asPath === '/birthday'}>생일</SC.LinkButton>
         </Link>
       </SC.Nav>
