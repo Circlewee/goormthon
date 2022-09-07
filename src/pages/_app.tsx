@@ -1,12 +1,34 @@
+import type { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
-import Layout from '../components/Layout';
+import type { NextPage } from 'next';
+import { RecoilRoot } from 'recoil';
+import { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+import theme from 'src/styles/theme';
+import GlobalStyle from 'src/styles/GlobalStyle';
+
+export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const JejuIleum = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <RecoilRoot>
+      <ToastContainer />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </RecoilRoot>
   );
-}
+};
 
-export default MyApp;
+export default JejuIleum;
