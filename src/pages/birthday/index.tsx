@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
-import { RemoveScrollBar } from 'react-remove-scroll-bar';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+// import { RemoveScrollBar } from 'react-remove-scroll-bar';
+import { useRouter } from 'next/router';
+import { useSetRecoilState } from 'recoil';
 
 import * as SC from './BirthdayPage.style';
 import { Label } from '../../components/Form/Label';
 import { SelectBox } from '../../components/Form/SelectBox';
 import getDateList from '../../utils/getDateList';
-import { requestStateAtom } from 'src/atom/atom';
+import { requestStateAtom } from '../../atom/atom';
 import { postBirthTransfer } from '../../api/api';
-import useToast from 'src/hooks/useToast';
+import useToast from '../../hooks/useToast';
+import { Layout } from '../../components/Layout';
 
 const BirthdayPage = () => {
   const [userData, setUserData] = useState({ month: '선택', date: '선택' });
-  const [requestState, setRequestState] = useRecoilState(requestStateAtom);
+  const setRequestState = useSetRecoilState(requestStateAtom);
   const monthList = [
     '1월',
     '2월',
@@ -28,7 +29,7 @@ const BirthdayPage = () => {
     '11월',
     '12월',
   ];
-  const navigate = useNavigate();
+  const router = useRouter();
   const toast = useToast();
 
   useEffect(() => {
@@ -55,12 +56,12 @@ const BirthdayPage = () => {
     });
 
     const response = await postBirthTransfer(birthday);
-    navigate('/result', { state: { data: response.data, endpoint: 'birthday' } });
+    router.push({ pathname: '/result', query: { data: response.data, endpoint: 'birthday' } });
   };
 
   return (
     <div>
-      <RemoveScrollBar />
+      {/* <RemoveScrollBar /> */}
       <SC.Wrapper>
         <SC.ExplanationText>태어난 날짜를 선택해주세요</SC.ExplanationText>
         <SC.CustomForm>
@@ -89,6 +90,10 @@ const BirthdayPage = () => {
       </SC.Wrapper>
     </div>
   );
+};
+
+BirthdayPage.getLayout = (page: React.ReactNode) => {
+  return <Layout>{page}</Layout>;
 };
 
 export default BirthdayPage;

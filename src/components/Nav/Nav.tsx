@@ -1,18 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import * as SC from './Nav.style';
 
 const Nav = () => {
-  const location = useLocation();
+  const router = useRouter();
 
   return (
     <SC.Wrapper>
       <SC.Nav>
-        <Link to='/name'>
-          <SC.LinkButton selected={location.pathname === '/name'}>이름</SC.LinkButton>
+        <Link href='/name'>
+          <SC.LinkButton selected={router.asPath === '/name'}>이름</SC.LinkButton>
         </Link>
-        <Link to='/birthday'>
-          <SC.LinkButton selected={location.pathname === '/birthday'}>생일</SC.LinkButton>
+        <Link href='/birthday'>
+          <SC.LinkButton selected={router.asPath === '/birthday'}>생일</SC.LinkButton>
         </Link>
       </SC.Nav>
     </SC.Wrapper>

@@ -1,11 +1,12 @@
 import { useForm, useFieldArray } from 'react-hook-form';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import * as SC from './NamePage.style';
 import { Label } from '../../components/Form/Label';
 import { Input } from '../../components/Form/Input';
+import { Layout } from '../../components/Layout';
 import useToast from '../../hooks/useToast';
 import { requestStateAtom } from '../../atom/atom';
 import { postTransfer } from '../../api/api';
@@ -19,8 +20,8 @@ type FormType = {
 const NamePage = () => {
   const toast = useToast();
   const [nameState, setNameState] = useState({ firstName: '', lastName: '' });
-  const [requestState, setRequestState] = useRecoilState(requestStateAtom);
-  const navigate = useNavigate();
+  const setRequestState = useSetRecoilState(requestStateAtom);
+  const router = useRouter();
 
   const { register, control, handleSubmit } = useForm<FormType>({
     mode: 'onChange',
@@ -52,7 +53,7 @@ const NamePage = () => {
     });
 
     const response = await postTransfer(meanArray);
-    navigate('/result', { state: { data: response.data, endpoint: 'name' } });
+    router.push({ pathname: '/result', query: { data: response.data, endpoint: 'name' } });
   };
 
   const handleInputAdd = () => {
@@ -128,6 +129,10 @@ const NamePage = () => {
       </SC.Wrapper>
     </div>
   );
+};
+
+NamePage.getLayout = (page: React.ReactNode) => {
+  return <Layout>{page}</Layout>;
 };
 
 export default NamePage;

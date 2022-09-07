@@ -1,16 +1,17 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 
 export const Header = styled.header`
   display: flex;
   position: relative;
-  background-color: ${({ theme }) => theme.color.backgroundBlue};
+  background-color: ${(props) => props.theme.color.backgroundBlue};
   align-items: center;
   text-align: center;
   color: ${(props) => props.theme.color.orange};
   flex-direction: column;
 `;
 
-export const BackgroundImg = styled.img`
+export const BackgroundImg = styled(Image)`
   position: absolute;
   width: 100%;
   max-width: 500px;
@@ -24,7 +25,7 @@ export const SubTitle = styled.h2`
   line-height: 42px;
 `;
 
-export const TitleImg = styled.img`
+export const TitleImg = styled(Image)`
   width: 100%;
   max-width: 330px;
   height: auto;

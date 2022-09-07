@@ -71,11 +71,11 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   
-  img {
+  /* img {
     display: block;
     width: 100%;
     height: 100%;
-  }
+  } */
 `;
 
 export default GlobalStyle;
