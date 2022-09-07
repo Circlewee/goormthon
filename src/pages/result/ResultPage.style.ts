@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Image from 'next/image';
 
 export const Container = styled.div`
   display: flex;
@@ -68,7 +69,7 @@ export const Title = styled.h1`
   z-index: 99;
 `;
 
-export const BackgroundImg = styled.img<{ index: number }>`
+export const BackgroundImg = styled(Image)<{ index: number }>`
   position: absolute;
   width: 100%;
   height: auto;

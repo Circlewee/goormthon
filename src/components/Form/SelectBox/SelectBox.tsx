@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import * as SC from './SelectBox.style';
-import { dropIcon } from '../../../assets';
+import { dropIcon } from 'public/assets';
 
 interface SelectBoxProps {
   dataList: string[];

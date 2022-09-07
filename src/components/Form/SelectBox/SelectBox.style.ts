@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import Image from 'next/image';
 
 const rotate180 = keyframes`
   0% {
@@ -34,17 +35,10 @@ export const SelectedText = styled.p<{ isInit: boolean }>`
     `}
 `;
 
-export const DropDownImg = styled.img<{ isShow: boolean }>`
+export const DropDownImg = styled(Image)<{ isShow: boolean }>`
   width: 14px;
   height: auto;
   margin-top: -3px;
-
-  /* ${(props) =>
-    props.isShow &&
-    css`
-      transform: rotate(180deg);
-      animation: ${rotate180} 0.3s;
-    `} */
 `;
 
 export const DropDownBox = styled.div`

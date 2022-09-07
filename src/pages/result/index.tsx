@@ -2,27 +2,27 @@ import { useEffect, useRef, useState } from 'react';
 import { exportComponentAsPNG } from 'react-component-export-image';
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 import { useRecoilValue } from 'recoil';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, withRouter } from 'next/router';
+import Image from 'next/image';
 
 import * as SC from './ResultPage.style';
 import { requestStateAtom } from '../../atom/atom';
 import useToast from '../../hooks/useToast';
-import { saveIcon, staticLogo } from '../../assets';
-import { Instagram, Kakao } from '../../assets/svg';
+import { saveIcon, staticLogo } from 'public/assets';
+import { Instagram, Kakao } from 'public/assets/svg';
 import getResultImages from 'src/utils/getResultImages';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
   const requestState = useRecoilValue(requestStateAtom);
-  const navigate = useNavigate();
+  const router = useRouter();
   const toast = useToast();
-  const location = useLocation();
-  const state = location.state as { data: string; endpoint: 'name' | 'birthday' };
+  const state = router.query as { data: string; endpoint: 'name' | 'birthday' };
   const [resultImage, setResultImage] = useState({ background: '', imgT: '', imgB: '' });
 
   useEffect(() => {
     if (!requestState.isCorrect) {
-      navigate('/name');
+      router.replace('/name');
       toast.error('먼저 이름과 이름의 의미를 입력해주세요!');
     }
   }, [requestState.isCorrect]);
@@ -95,7 +95,7 @@ const ResultPage = () => {
 
         <SC.SaveButton onClick={handleExportPNG}>
           이미지 저장
-          <img src={saveIcon} />
+          <Image src={saveIcon} />
         </SC.SaveButton>
         <SC.ShareText>
           친구들에게 <strong>제주일름</strong> 알려주기
@@ -122,4 +122,4 @@ const ResultPage = () => {
   );
 };
 
-export default ResultPage;
+export default withRouter(ResultPage);
