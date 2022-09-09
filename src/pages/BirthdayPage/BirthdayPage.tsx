@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RemoveScrollBar } from 'react-remove-scroll-bar';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import * as SC from './BirthdayPage.style';
 import { Label } from '../../components/Form/Label';
@@ -13,7 +13,7 @@ import useToast from 'src/hooks/useToast';
 
 const BirthdayPage = () => {
   const [userData, setUserData] = useState({ month: '선택', date: '선택' });
-  const [requestState, setRequestState] = useRecoilState(requestStateAtom);
+  const setRequestState = useSetRecoilState(requestStateAtom);
   const monthList = [
     '1월',
     '2월',

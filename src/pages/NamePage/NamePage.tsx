@@ -1,5 +1,5 @@
 import { useForm, useFieldArray } from 'react-hook-form';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ type FormType = {
 const NamePage = () => {
   const toast = useToast();
   const [nameState, setNameState] = useState({ firstName: '', lastName: '' });
-  const [requestState, setRequestState] = useRecoilState(requestStateAtom);
+  const setRequestState = useSetRecoilState(requestStateAtom);
   const navigate = useNavigate();
 
   const { register, control, handleSubmit } = useForm<FormType>({
