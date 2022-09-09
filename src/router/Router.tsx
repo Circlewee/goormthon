@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import NamePage from '../pages/NamePage/NamePage';
-import BirthdayPage from '../pages/BirthdayPage/BirthdayPage';
-import ResultPage from '../pages/ResultPage/ResultPage';
-import Template from '../pages/Template/Template';
+import { NamePage } from '../pages/NamePage';
+import { BirthdayPage } from '../pages/BirthdayPage';
+import { ResultPage } from '../pages/ResultPage';
+import { Template } from '../pages/Template';
 
 const Router = () => {
   return (
