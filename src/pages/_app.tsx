@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import { RecoilRoot } from 'recoil';
@@ -19,6 +19,10 @@ type AppPropsWithLayout = AppProps & {
 
 const JejuIleum = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout || ((page) => page);
+
+  useEffect(() => {
+    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+  }, []);
 
   return (
     <RecoilRoot>
