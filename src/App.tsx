@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
-import Router from './router/Router';
+import { Router } from './router';
 
 const App = () => {
   return (
