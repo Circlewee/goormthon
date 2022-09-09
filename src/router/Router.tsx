@@ -3,13 +3,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NamePage from '../pages/NamePage/NamePage';
 import BirthdayPage from '../pages/BirthdayPage/BirthdayPage';
 import ResultPage from '../pages/ResultPage/ResultPage';
-import MainPage from '../pages/MainPage/MainPage';
+import Template from '../pages/Template/Template';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/*' element={<MainPage />}>
+        <Route path='/*' element={<Template />}>
           <Route path='name' element={<NamePage />} />
           <Route path='birthday' element={<BirthdayPage />} />
           <Route path='*' element={<Navigate to='/name' />} />
