@@ -1,4 +1,11 @@
-import * as images from '../assets';
+import { StaticImageData } from 'next/image';
+import * as images from 'public/assets';
+
+export interface ResultType {
+  background: StaticImageData | string;
+  imgT: StaticImageData | string;
+  imgB: StaticImageData | string;
+}
 
 const arrayT = [
   images.imgT1,
@@ -12,7 +19,7 @@ const arrayT = [
 
 const arrayB = [images.imgB2, images.imgB3];
 
-const randomImg = (array: string[]) => {
+const randomImg = (array: StaticImageData[]) => {
   const random = Math.ceil(Math.random() * array.length);
 
   return array[random - 1];
@@ -20,7 +27,7 @@ const randomImg = (array: string[]) => {
 
 const getResultImages = (type: 'name' | 'birthday', date?: { month: number; date: number }) => {
   const month = new Date().getMonth();
-  const result = { background: '', imgT: '', imgB: '' };
+  const result: ResultType = { background: '', imgT: '', imgB: '' };
 
   switch (type) {
     case 'name':
