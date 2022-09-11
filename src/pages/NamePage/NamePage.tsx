@@ -8,7 +8,7 @@ import { Label } from '../../components/Form/Label';
 import { Input } from '../../components/Form/Input';
 import useToast from '../../hooks/useToast';
 import { requestStateAtom } from '../../atom/atom';
-import { postTransfer } from '../,./../../api/api';
+import { postTransfer } from 'src/api/api';
 
 type FormType = {
   name: {
@@ -41,7 +41,7 @@ const NamePage = () => {
       return toast.error('본명을 입력해주세요.');
     }
 
-    if (!meanArray[0]) {
+    if (meanArray.length === 0) {
       return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
     }
 
@@ -52,7 +52,7 @@ const NamePage = () => {
     });
 
     const response = await postTransfer(meanArray);
-    navigate('/result', { state: { data: response.data, endpoint: 'name' } });
+    navigate(`/result?result=${response.data}&type=name`);
   };
 
   const handleInputAdd = () => {

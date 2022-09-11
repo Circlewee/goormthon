@@ -18,7 +18,7 @@ const randomImg = (array: string[]) => {
   return array[random - 1];
 };
 
-const getResultImages = (type: 'name' | 'birthday', date?: { month: number; date: number }) => {
+const getResultImages = (type: string, date?: { month: number; date: number }) => {
   const month = new Date().getMonth();
   const result = { background: '', imgT: '', imgB: '' };
 
@@ -40,6 +40,7 @@ const getResultImages = (type: 'name' | 'birthday', date?: { month: number; date
       break;
     case 'birthday':
       if (!date) return result;
+
       if (date.month >= 2 && date.month <= 4) {
         result.background = images.bg1;
         result.imgB = images.imgB1;

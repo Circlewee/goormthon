@@ -39,14 +39,11 @@ const BirthdayPage = () => {
   }, [userData.month]);
 
   const handleClick = async () => {
-    const birthday = [];
-
     if (userData.month === '선택' || userData.date === '선택') {
       return toast.error('생년 월일을 입력해주세요');
     }
 
-    birthday.push(Number(userData.month.split('월')[0]));
-    birthday.push(Number(userData.date.split('일')[0]));
+    const birthday = [Number(userData.month.split('월')[0]), Number(userData.date.split('일')[0])];
 
     setRequestState({
       firstName: userData.date,
@@ -55,7 +52,7 @@ const BirthdayPage = () => {
     });
 
     const response = await postBirthTransfer(birthday);
-    navigate('/result', { state: { data: response.data, endpoint: 'birthday' } });
+    navigate(`/result?result=${response.data}&type=birthday`);
   };
 
   return (

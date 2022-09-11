@@ -3,6 +3,7 @@ import { exportComponentAsPNG } from 'react-component-export-image';
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 import { useRecoilValue } from 'recoil';
 import { useNavigate, useLocation } from 'react-router-dom';
+import qs from 'qs';
 
 import * as SC from './ResultPage.style';
 import { requestStateAtom } from '../../atom/atom';
@@ -10,6 +11,7 @@ import useToast from '../../hooks/useToast';
 import { saveIcon, staticLogo } from '../../assets';
 import { Instagram, Kakao } from '../../assets/svg';
 import getResultImages from 'src/utils/getResultImages';
+import isCorrectType from 'src/utils/isCorrectType';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
@@ -17,15 +19,10 @@ const ResultPage = () => {
   const navigate = useNavigate();
   const toast = useToast();
   const location = useLocation();
-  const state = location.state as { data: string; endpoint: 'name' | 'birthday' };
   const [resultImage, setResultImage] = useState({ background: '', imgT: '', imgB: '' });
-
-  useEffect(() => {
-    if (!requestState.isCorrect) {
-      navigate('/name');
-      toast.error('먼저 이름과 이름의 의미를 입력해주세요!');
-    }
-  }, [requestState.isCorrect]);
+  const { result, type } = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
 
   const handleKakaoShare = () => {
     window.Kakao.Share.sendDefault({
@@ -59,19 +56,29 @@ const ResultPage = () => {
   };
 
   const handleRestart = () => {
-    // navigate('/name', { replace: true });
-    window.location.href = process.env.REACT_APP_SERVICE_URL;
+    // window.location.href = process.env.REACT_APP_SERVICE_URL;
+    navigate('/', { replace: true });
   };
 
   useEffect(() => {
     window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+
+    if (!result || result === '' || !type || type === '') {
+      navigate('/name');
+      toast.error('잘못된 접근입니다.');
+    }
+
     setResultImage(
-      getResultImages(state.endpoint, {
+      getResultImages(type as string, {
         month: Number(requestState.lastName.split('월')[0]) - 1,
         date: Number(requestState.lastName.split('일')[0]),
       })
     );
   }, []);
+
+  const handleIncorrect = () => {
+    navigate('/name');
+  };
 
   return (
     <SC.Container>
@@ -82,11 +89,11 @@ const ResultPage = () => {
           <SC.SubTitleWrapper>
             <SC.SubTitle>
               {requestState.lastName + requestState.firstName}
-              {state.endpoint === 'name' ? '님의' : '의'}
+              {type === 'name' ? '님의' : '의'}
             </SC.SubTitle>
             <SC.SubTitle>제주도 이름은</SC.SubTitle>
           </SC.SubTitleWrapper>
-          <SC.Title>{state.data}</SC.Title>
+          <SC.Title>{isCorrectType(result, 'string', handleIncorrect)}</SC.Title>
           <SC.BackgroundImg src={resultImage.background} index={1} />
           <SC.BackgroundImg src={resultImage.imgT} index={2} />
           <SC.BackgroundImg src={resultImage.imgB} index={3} />
