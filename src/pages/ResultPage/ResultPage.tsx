@@ -6,12 +6,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
 
 import * as SC from './ResultPage.style';
-import { requestStateAtom } from '../../atom/atom';
-import useToast from '../../hooks/useToast';
-import { saveIcon, staticLogo } from '../../assets';
-import { Instagram, Kakao } from '../../assets/svg';
-import getResultImages from 'src/utils/getResultImages';
-import isCorrectType from 'src/utils/isCorrectType';
+import { requestStateAtom } from '@src/atom/atom';
+import useToast from '@src/hooks/useToast';
+import { saveIcon, staticLogo } from '@src/assets';
+import { Instagram, Kakao } from '@src/assets/svg';
+import getResultImages from '@src/utils/getResultImages';
+import isCorrectType from '@src/utils/isCorrectType';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);

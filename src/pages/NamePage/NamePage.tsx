@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as SC from './NamePage.style';
-import { Label } from '../../components/Form/Label';
-import { Input } from '../../components/Form/Input';
-import useToast from '../../hooks/useToast';
-import { requestStateAtom } from '../../atom/atom';
-import { postTransfer } from 'src/api/api';
+import { Label } from '@src/components/Form/Label';
+import { Input } from '@src/components/Form/Input';
+import useToast from '@src/hooks/useToast';
+import { requestStateAtom } from '@src/atom/atom';
+import { postTransfer } from '@src/api/api';
 
 type FormType = {
   name: {

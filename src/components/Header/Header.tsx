@@ -1,5 +1,5 @@
 import * as SC from './Header.style';
-import { logo, headerImg } from '../../assets';
+import { logo, headerImg } from '@src/assets';
 
 const Header = () => {
   return (

@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import * as SC from './BirthdayPage.style';
-import { Label } from '../../components/Form/Label';
-import { SelectBox } from '../../components/Form/SelectBox';
-import getDateList from '../../utils/getDateList';
-import { requestStateAtom } from 'src/atom/atom';
-import { postBirthTransfer } from '../../api/api';
-import useToast from 'src/hooks/useToast';
+import { Label } from '@src/components/Form/Label';
+import { SelectBox } from '@src/components/Form/SelectBox';
+import getDateList from '@src/utils/getDateList';
+import { requestStateAtom } from '@src/atom/atom';
+import { postBirthTransfer } from '@src/api/api';
+import useToast from '@src/hooks/useToast';
 
 const BirthdayPage = () => {
   const [userData, setUserData] = useState({ month: '선택', date: '선택' });
