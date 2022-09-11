@@ -94,10 +94,22 @@ const ResultPage = () => {
             <SC.SubTitle>제주도 이름은</SC.SubTitle>
           </SC.SubTitleWrapper>
           <SC.Title>{isCorrectType(result, 'string', handleIncorrect)}</SC.Title>
-          <SC.BackgroundImg src={resultImage.background} index={1} />
-          <SC.BackgroundImg src={resultImage.imgT} index={2} />
-          <SC.BackgroundImg src={resultImage.imgB} index={3} />
-          <SC.BackgroundImg src={staticLogo} index={4} />
+          <SC.BackgroundImg
+            src={resultImage.background}
+            index={1}
+            alt='result page background image'
+          />
+          <SC.BackgroundImg
+            src={resultImage.imgT}
+            index={2}
+            alt='result page background top image'
+          />
+          <SC.BackgroundImg
+            src={resultImage.imgB}
+            index={3}
+            alt='result page background bottom image'
+          />
+          <SC.BackgroundImg src={staticLogo} index={4} alt='result page logo image' />
         </SC.ResultContainer>
 
         <SC.SaveButton onClick={handleExportPNG}>
