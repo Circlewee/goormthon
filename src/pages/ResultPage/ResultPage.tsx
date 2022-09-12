@@ -56,13 +56,10 @@ const ResultPage = () => {
   };
 
   const handleRestart = () => {
-    // window.location.href = process.env.REACT_APP_SERVICE_URL;
     navigate('/', { replace: true });
   };
 
   useEffect(() => {
-    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-
     if (!result || result === '' || !type || type === '') {
       navigate('/name');
       toast.error('잘못된 접근입니다.');

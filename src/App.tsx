@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
@@ -8,6 +9,10 @@ import theme from './styles/theme';
 import { Router } from './router';
 
 const App = () => {
+  useEffect(() => {
+    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+  }, []);
+
   return (
     <RecoilRoot>
       <ToastContainer />
