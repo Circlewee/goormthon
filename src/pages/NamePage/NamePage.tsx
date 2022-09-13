@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as SC from './NamePage.style';
-import { Label } from '@src/components/Form/Label';
-import { Input } from '@src/components/Form/Input';
-import useToast from '@src/hooks/useToast';
-import { requestStateAtom } from '@src/atom/atom';
-import { postTransfer } from '@src/api/api';
+import { Label } from 'src/components/Form/Label';
+import { Input } from 'src/components/Form/Input';
+import useToast from 'src/hooks/useToast';
+import { requestStateAtom } from 'src/atom/atom';
+import { postTransfer } from 'src/api/api';
+import { useCustomForm } from 'src/hooks/useCustomForm';
 
 type FormType = {
   name: {
@@ -22,17 +23,12 @@ const NamePage = () => {
   const setRequestState = useSetRecoilState(requestStateAtom);
   const navigate = useNavigate();
 
-  const { register, control, handleSubmit } = useForm<FormType>({
-    mode: 'onChange',
-    defaultValues: {
-      name: [{ mean: '' }, { mean: '' }],
-    },
-  });
+  const { register, handleSubmit, fields, append, remove } = useCustomForm();
 
-  const { fields, append, remove } = useFieldArray({
-    name: 'name',
-    control,
-  });
+  // const { fields, append, remove } = useFieldArray({
+  //   name: 'name',
+  //   control,
+  // });
 
   const submitAction = async (data: FormType) => {
     const meanArray = data.name.map((name) => name.mean);

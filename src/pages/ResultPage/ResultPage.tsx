@@ -6,12 +6,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
 
 import * as SC from './ResultPage.style';
-import { requestStateAtom } from '@src/atom/atom';
-import useToast from '@src/hooks/useToast';
-import { saveIcon, staticLogo } from '@src/assets';
-import { Instagram, Kakao } from '@src/assets/svg';
-import getResultImages from '@src/utils/getResultImages';
-import isCorrectType from '@src/utils/isCorrectType';
+import { requestStateAtom } from 'src/atom/atom';
+import useToast from 'src/hooks/useToast';
+import { saveIcon, staticLogo } from 'src/assets';
+import { Instagram, Kakao } from 'src/assets/svg';
+import getResultImages from 'src/utils/getResultImages';
+import isCorrectType from 'src/utils/isCorrectType';
 
 const ResultPage = () => {
   const exportImgRef = useRef<HTMLDivElement>(null);
@@ -82,6 +82,7 @@ const ResultPage = () => {
       <SC.Wrapper>
         <SC.ResultTitle>번역을 완성했어요!</SC.ResultTitle>
 
+        {/* 결과 컴포넌트 분리 */}
         <SC.ResultContainer ref={exportImgRef}>
           <SC.SubTitleWrapper>
             <SC.SubTitle>
