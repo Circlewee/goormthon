@@ -1,78 +1,19 @@
-import { useForm, useFieldArray } from 'react-hook-form';
-import { useSetRecoilState } from 'recoil';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import * as SC from './NamePage.style';
 import { Label } from 'src/components/Form/Label';
 import { Input } from 'src/components/Form/Input';
-import useToast from 'src/hooks/useToast';
-import { requestStateAtom } from 'src/atom/atom';
-import { postTransfer } from 'src/api/api';
 import { useCustomForm } from 'src/hooks/useCustomForm';
 
-type FormType = {
-  name: {
-    mean: string;
-  }[];
-};
-
 const NamePage = () => {
-  const toast = useToast();
-  const [nameState, setNameState] = useState({ firstName: '', lastName: '' });
-  const setRequestState = useSetRecoilState(requestStateAtom);
-  const navigate = useNavigate();
-
-  const { register, handleSubmit, fields, append, remove } = useCustomForm();
-
-  // const { fields, append, remove } = useFieldArray({
-  //   name: 'name',
-  //   control,
-  // });
-
-  const submitAction = async (data: FormType) => {
-    const meanArray = data.name.map((name) => name.mean);
-
-    if (!nameState.firstName || !nameState.lastName) {
-      return toast.error('본명을 입력해주세요.');
-    }
-
-    if (meanArray.length === 0) {
-      return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
-    }
-
-    setRequestState({
-      firstName: nameState.firstName,
-      lastName: nameState.lastName,
-      isCorrect: true,
-    });
-
-    const response = await postTransfer(meanArray);
-    navigate(`/result?result=${response.data}&type=name`);
-  };
-
-  const handleInputAdd = () => {
-    append({ mean: '' });
-  };
-
-  const handleInputDelete = (index: number) => {
-    return () => {
-      remove(index);
-    };
-  };
-
-  const handleNameChange = {
-    firstNameChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setNameState((prevState) => {
-        return { ...prevState, firstName: e.target.value };
-      });
-    },
-    lastNameChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setNameState((prevState) => {
-        return { ...prevState, lastName: e.target.value };
-      });
-    },
-  };
+  const {
+    register,
+    handleSubmit,
+    fields,
+    addInputElement,
+    removeInputElement,
+    submitAction,
+    firstNameChange,
+    lastNameChange,
+  } = useCustomForm();
 
   return (
     <div>
@@ -80,16 +21,11 @@ const NamePage = () => {
         <SC.RealNameContainer>
           <div>
             <Label htmlFor='lastName'>성</Label>
-            <Input
-              id='lastName'
-              placeholder='성'
-              width={102}
-              onChange={handleNameChange.lastNameChange}
-            />
+            <Input id='lastName' placeholder='성' width={102} onChange={lastNameChange} />
           </div>
           <div>
             <Label htmlFor='firstName'>이름</Label>
-            <Input id='firstName' placeholder='이름' onChange={handleNameChange.firstNameChange} />
+            <Input id='firstName' placeholder='이름' onChange={firstNameChange} />
           </div>
         </SC.RealNameContainer>
         <SC.DivideLine />
@@ -108,7 +44,7 @@ const NamePage = () => {
                     register={register(`name.${index}.mean` as const)}
                   />
                   {fields.length !== 1 && index === fields.length - 1 && (
-                    <SC.DeleteButton type='button' onClick={handleInputDelete(index)}>
+                    <SC.DeleteButton type='button' onClick={removeInputElement(index)}>
                       삭제
                     </SC.DeleteButton>
                   )}
@@ -116,7 +52,7 @@ const NamePage = () => {
               </SC.NameMeanContainer>
             );
           })}
-          <SC.AddInputButton type='button' onClick={handleInputAdd}>
+          <SC.AddInputButton type='button' onClick={addInputElement}>
             의미 추가하기
           </SC.AddInputButton>
           <SC.SubmitButton type='submit'>제주일름 만들기</SC.SubmitButton>
