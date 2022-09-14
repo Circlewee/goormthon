@@ -1,6 +1,6 @@
 import * as SC from './NamePage.style';
-import { Label } from 'src/components/Form/Label';
-import { Input } from 'src/components/Form/Input';
+import { Label } from 'src/components/Common/Label';
+import { Input } from 'src/components/Common/Input';
 import { useCustomForm } from 'src/hooks/useCustomForm';
 
 const NamePage = () => {

@@ -1,6 +1,6 @@
 import * as SC from './BirthdayPage.style';
-import { Label } from 'src/components/Form/Label';
-import { Select } from 'src/components/Form/Select';
+import { Label } from 'src/components/Common/Label';
+import { Select } from 'src/components/Birthday/Select';
 import getDateList from 'src/utils/getDateList';
 import { useSelectBox } from 'src/hooks/useSelectBox';
 
