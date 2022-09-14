@@ -1,6 +1,6 @@
 import * as SC from './BirthdayPage.style';
 import { Label } from 'src/components/Form/Label';
-import { SelectBox } from 'src/components/Form/SelectBox';
+import { Select } from 'src/components/Form/Select';
 import getDateList from 'src/utils/getDateList';
 import { useSelectBox } from 'src/hooks/useSelectBox';
 
@@ -28,7 +28,7 @@ const BirthdayPage = () => {
         <SC.CustomForm>
           <SC.InputWrapper>
             <Label htmlFor='monthInput'>월</Label>
-            <SelectBox
+            <Select
               dataList={monthList}
               type='month'
               userData={userData}
@@ -37,7 +37,7 @@ const BirthdayPage = () => {
           </SC.InputWrapper>
           <SC.InputWrapper>
             <Label htmlFor='dayInput'>일</Label>
-            <SelectBox
+            <Select
               dataList={getDateList(userData.month)}
               type='date'
               userData={userData}
