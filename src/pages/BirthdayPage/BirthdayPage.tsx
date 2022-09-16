@@ -22,7 +22,7 @@ const BirthdayPage = () => {
   const { handleClick, userData, setUserData } = useSelectBox();
 
   return (
-    <div>
+    <main>
       <SC.Wrapper>
         <SC.ExplanationText>태어난 날짜를 선택해주세요</SC.ExplanationText>
         <SC.CustomForm>
@@ -49,7 +49,7 @@ const BirthdayPage = () => {
           제주일름 만들기
         </SC.SubmitButton>
       </SC.Wrapper>
-    </div>
+    </main>
   );
 };
 

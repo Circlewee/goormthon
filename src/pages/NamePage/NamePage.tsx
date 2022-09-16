@@ -16,7 +16,7 @@ const NamePage = () => {
   } = useCustomForm();
 
   return (
-    <div>
+    <main>
       <SC.Wrapper>
         <SC.RealNameContainer>
           <div>
@@ -58,7 +58,7 @@ const NamePage = () => {
           <SC.SubmitButton type='submit'>제주일름 만들기</SC.SubmitButton>
         </SC.Form>
       </SC.Wrapper>
-    </div>
+    </main>
   );
 };
 

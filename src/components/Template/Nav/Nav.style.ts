@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Nav = styled.nav`
   width: 100%;
 `;
 
-export const Nav = styled.nav`
+export const Wrapper = styled.div`
   width: 100%;
   max-width: 500px;
   padding: 56px 30px 0 30px;

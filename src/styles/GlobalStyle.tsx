@@ -29,9 +29,9 @@ const GlobalStyle = createGlobalStyle`
   
   body > div {
     width: 100%;
-    /* max-width: 500px; */
 
-    > div:not(:first-child) {
+    > main:not(:first-child),
+    > nav:not(:first-child) {
       display: flex;
       justify-content: center;
       align-items: center;
