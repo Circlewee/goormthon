@@ -1,15 +1,18 @@
 import { toast, ToastOptions } from 'react-toastify';
 
+const ToastId = 'JejuIleum_Toast';
+
 const useToast = () => {
   const option: ToastOptions = {
     position: 'top-center',
-    autoClose: 3000,
+    autoClose: 2000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
     draggable: false,
     progress: undefined,
     theme: 'dark',
+    toastId: ToastId,
   };
 
   const success = (message: string) => {
