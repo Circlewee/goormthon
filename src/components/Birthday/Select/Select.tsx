@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 
 import * as SC from './Select.style';
 import { dropIcon } from 'src/assets';
+import useToast from 'src/hooks/useToast';
 
 interface SelectBoxProps {
   dataList: string[];
@@ -22,10 +23,13 @@ interface SelectBoxProps {
 const SelectBox = ({ dataList, type, userData, setUserData }: SelectBoxProps) => {
   const [isShow, setIsShow] = useState(false);
   const isDisabled = type === 'date' && userData.month === '선택';
+  const toast = useToast();
 
   const handleSelectBoxShow = () => {
     if (!isDisabled) {
       setIsShow((prevState) => !prevState);
+    } else {
+      toast.error('먼저 월을 선택해주세요.');
     }
   };
 
