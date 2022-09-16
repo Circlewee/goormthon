@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ height?: number }>`
   width: 100%;
   max-width: 500px;
-  height: 100vh;
+  height: ${(props) => props.height}px;
   padding: 0 30px;
   background-color: ${({ theme }) => theme.color.lightBlue};
   overflow: hidden;
@@ -39,7 +39,7 @@ export const InputWrapper = styled.div`
 
 export const SubmitButton = styled.button`
   width: 100%;
-  margin-top: 231px;
+  margin-top: 50px;
   margin-bottom: 40px;
   padding: 25px 0;
   border-radius: 88px;

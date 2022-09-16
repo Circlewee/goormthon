@@ -3,8 +3,10 @@ import { Label } from 'src/components/Common/Label';
 import { Select } from 'src/components/Birthday/Select';
 import getDateList from 'src/utils/getDateList';
 import { useSelectBox } from 'src/hooks/useSelectBox';
+import { useLayoutEffect, useState } from 'react';
 
 const BirthdayPage = () => {
+  const [deviceHeight, setDeviceHeight] = useState<number>();
   const monthList = [
     '1월',
     '2월',
@@ -21,9 +23,13 @@ const BirthdayPage = () => {
   ];
   const { handleClick, userData, setUserData } = useSelectBox();
 
+  useLayoutEffect(() => {
+    setDeviceHeight(window.innerHeight - 280.89);
+  }, []);
+
   return (
     <main>
-      <SC.Wrapper>
+      <SC.Wrapper height={deviceHeight}>
         <SC.ExplanationText>태어난 날짜를 선택해주세요</SC.ExplanationText>
         <SC.CustomForm>
           <SC.InputWrapper>
