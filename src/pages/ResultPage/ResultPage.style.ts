@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ height?: string }>`
   display: flex;
+  height: ${(props) => props.height};
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.color.lightBlue};
@@ -17,6 +18,8 @@ export const ResultTitle = styled.h1`
   font-family: ${({ theme }) => theme.font.bold}, sans-serif;
   color: #ffffff;
   text-align: center;
+  margin: 0;
+  margin-top: 25px;
   font-size: 30px;
   line-height: 34px;
 `;

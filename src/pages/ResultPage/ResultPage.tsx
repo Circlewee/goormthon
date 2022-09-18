@@ -5,6 +5,7 @@ import { saveIcon, staticLogo } from 'src/assets';
 import { Instagram, Kakao } from 'src/assets/svg';
 import isCorrectType from 'src/utils/isCorrectType';
 import { useCreateResult } from 'src/hooks/useCreateResult';
+import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
 
 const ResultPage = () => {
   const {
@@ -19,8 +20,10 @@ const ResultPage = () => {
     handleRestart,
   } = useCreateResult();
 
+  const { containerRef, height } = useResponsiveHeight();
+
   return (
-    <SC.Container>
+    <SC.Container ref={containerRef} height={height}>
       <SC.Wrapper>
         <SC.ResultTitle>번역을 완성했어요!</SC.ResultTitle>
 
