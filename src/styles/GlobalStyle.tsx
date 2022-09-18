@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { media } from './media';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -17,6 +18,15 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
     font-family: 'GmarketSansMedium', sans-serif;
+  }
+  
+  html {
+    ${media.desktop`
+      font-size: 16px;
+    `};
+    ${media.mobile`
+      font-size: 14px;
+    `};
   }
 
   body {
