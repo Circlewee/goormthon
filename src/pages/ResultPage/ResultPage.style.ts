@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: ${({ theme }) => theme.color.lightBlue};
 `;
 
@@ -36,7 +35,7 @@ export const ResultContainer = styled.div`
 `;
 
 export const SubTitleWrapper = styled.div`
-  top: 90px;
+  top: 10%;
   left: 50%;
   z-index: 99;
 `;
@@ -58,7 +57,7 @@ export const SubTitle = styled.h2`
 export const Title = styled.h1`
   top: 50%;
   left: 50%;
-  width: 100%;
+  width: 95%;
   margin: 0;
   padding: 0 10%;
   text-align: center;

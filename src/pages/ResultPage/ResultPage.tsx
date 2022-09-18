@@ -24,14 +24,14 @@ const ResultPage = () => {
       <SC.Wrapper>
         <SC.ResultTitle>번역을 완성했어요!</SC.ResultTitle>
 
-        {/* 결과 컴포넌트 분리 */}
+        {/* TODO: 결과 컴포넌트 분리 */}
         <SC.ResultContainer ref={exportImgRef}>
           <SC.SubTitleWrapper>
             <SC.SubTitle>
               {requestState.lastName + requestState.firstName}
               {type === 'name' ? '님의' : '의'}
             </SC.SubTitle>
-            <SC.SubTitle>제주도 이름은</SC.SubTitle>
+            <SC.SubTitle>제주도 {type === 'name' ? '이름' : '방언'}은</SC.SubTitle>
           </SC.SubTitleWrapper>
           <SC.Title>{isCorrectType(result, 'string', handleIncorrect)}</SC.Title>
           <SC.BackgroundImg
