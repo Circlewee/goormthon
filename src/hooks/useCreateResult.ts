@@ -46,10 +46,9 @@ const useCreateResult = () => {
   };
 
   const exportComponentToPNG = () => {
-    // downloadToPNG(exportImgRef, {
-    //   fileName: `${requestState.lastName + requestState.firstName}_jejuileum`,
-    //   canvasOptions: { width: 400, height: 400 },
-    // });
+    downloadToPNG(exportImgRef, {
+      fileName: `${original}_jejuileum`,
+    });
   };
 
   const handleRestart = () => {
