@@ -10,12 +10,12 @@ import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
 const ResultPage = () => {
   const {
     exportImgRef,
-    requestState,
     type,
     result,
+    original,
     handleIncorrect,
     resultImage,
-    handleExportPNG,
+    exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
   } = useCreateResult();
@@ -31,7 +31,7 @@ const ResultPage = () => {
         <SC.ResultContainer ref={exportImgRef}>
           <SC.SubTitleWrapper>
             <SC.SubTitle>
-              {requestState.lastName + requestState.firstName}
+              {isCorrectType(original, 'string', handleIncorrect)}
               {type === 'name' ? '님의' : '의'}
             </SC.SubTitle>
             <SC.SubTitle>제주도 {type === 'name' ? '이름' : '방언'}은</SC.SubTitle>
@@ -55,7 +55,7 @@ const ResultPage = () => {
           <SC.BackgroundImg src={staticLogo} index={4} alt='result page logo image' />
         </SC.ResultContainer>
 
-        <SC.SaveButton onClick={handleExportPNG}>
+        <SC.SaveButton onClick={exportComponentToPNG}>
           이미지 저장
           <img src={saveIcon} />
         </SC.SaveButton>

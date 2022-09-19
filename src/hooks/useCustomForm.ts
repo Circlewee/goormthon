@@ -59,7 +59,11 @@ const useCustomForm = () => {
     });
 
     const response = await postTransfer(meanArray);
-    navigate(`/result?result=${response.data}&type=name`);
+    navigate(
+      `/result?result=${response.data}&type=name&original=${
+        nameState.lastName + nameState.firstName
+      }`
+    );
   };
 
   const firstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

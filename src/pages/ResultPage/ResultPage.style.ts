@@ -46,7 +46,7 @@ export const SubTitleWrapper = styled.div`
 export const SubTitle = styled.h2`
   margin: 0;
   color: #666666;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 24px;
   font-weight: 100;
   text-align: center;
@@ -64,7 +64,7 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0 10%;
   text-align: center;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 45px;
   transform: translate(-50%, -50%);
   z-index: 99;

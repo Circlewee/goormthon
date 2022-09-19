@@ -33,7 +33,9 @@ const useSelectBox = () => {
     });
 
     const response = await postBirthTransfer(birthday);
-    navigate(`/result?result=${response.data}&type=birthday`);
+    navigate(
+      `/result?result=${response.data}&type=birthday&original=${userData.month + userData.date}`
+    );
   };
 
   return { handleClick, userData, setUserData };
