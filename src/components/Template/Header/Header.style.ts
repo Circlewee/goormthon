@@ -18,10 +18,14 @@ export const BackgroundImg = styled.img`
   padding: 0 30px;
 `;
 
-export const SubTitle = styled.h2`
-  margin: 0;
-  font-size: 16px;
-  line-height: 42px;
+export const ReplaceTitle = styled.h1`
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+  margin: 60px 0 0 0;
+  padding: 0 30px;
+  font-family: ${(props) => props.theme.font.bold};
+  font-size: 62px;
 `;
 
 export const TitleImg = styled.img`
@@ -30,4 +34,10 @@ export const TitleImg = styled.img`
   height: auto;
   margin: 60px 0 0 0;
   padding: 0 30px;
+`;
+
+export const SubTitle = styled.h2`
+  margin: 0;
+  font-size: 16px;
+  line-height: 42px;
 `;
