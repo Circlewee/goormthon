@@ -27,18 +27,19 @@ const useCreateResult = () => {
         title: '제주오름',
         description: '내 이름을 제주 방언으로 해석해보자!',
         // TODO: imageUrl 추가
-        imageUrl: '',
+        imageUrl:
+          'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b9496f0-ee0c-4acd-8138-6958d110eb31/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220920%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220920T182852Z&X-Amz-Expires=86400&X-Amz-Signature=3c60abdef8c1784c3eb9ee216614640b3ceae88901e80f0cfa0e2dcd83647cc8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject',
         link: {
-          mobileWebUrl: process.env.REACT_APP_SERVICE_URL,
-          webUrl: process.env.REACT_APP_SERVICE_URL,
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
         },
       },
       buttons: [
         {
-          title: '만들러 가보기',
+          title: '친구 결과 확인하기',
           link: {
-            mobileWebUrl: process.env.REACT_APP_SERVICE_URL,
-            webUrl: process.env.REACT_APP_SERVICE_URL,
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
           },
         },
       ],
@@ -73,6 +74,10 @@ const useCreateResult = () => {
 
   const handleIncorrect = () => {
     navigate('/name');
+  };
+
+  const toastSuccessMessage = () => {
+    toast.success('공유 성공!');
   };
 
   const copyUrl = () => {
@@ -114,6 +119,8 @@ const useCreateResult = () => {
     handleKakaoShare,
     handleRestart,
     copyUrl,
+    toastSuccessMessage,
+    resultUrl: window.location.href,
   };
 };
 
