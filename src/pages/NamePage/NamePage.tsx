@@ -40,7 +40,7 @@ const NamePage = () => {
                 <SC.InputWrapper>
                   <Input
                     id={`meanInput${index}`}
-                    placeholder='예) 빛나다, 착한 등'
+                    placeholder='예시) 빛나다, 착한 등'
                     register={register(`name.${index}.mean` as const)}
                   />
                   {fields.length !== 1 && index === fields.length - 1 && (
