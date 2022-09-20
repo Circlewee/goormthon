@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 
+import { media } from 'src/styles/media';
+
 export const Container = styled.div<{ height?: string }>`
   display: flex;
   height: ${(props) => props.height};
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.color.lightBlue};
+  background-color: #003d99;
 `;
 
 export const Wrapper = styled.div`
@@ -38,19 +40,27 @@ export const ResultContainer = styled.div`
 `;
 
 export const SubTitleWrapper = styled.div`
-  top: 10%;
+  top: 0;
   left: 50%;
+  width: calc(100% - 9rem);
+  padding: 1rem 0 1rem 0;
+  background-color: ${({ theme }) => theme.color.orange};
+  transform: translate(-50%, 0);
+  border-radius: 0px 0px 1.75rem 1.75rem;
   z-index: 99;
+
+  ${media.mobile`
+    width: calc(100% - 7.4rem);
+  `}
 `;
 
 export const SubTitle = styled.h2`
   margin: 0;
-  color: #666666;
-  font-size: 1.375rem;
-  line-height: 24px;
-  font-weight: 100;
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 100%;
   text-align: center;
-  transform: translate(-50%, 0);
+  font-family: 'GmarketSansMedium', sans-serif;
 
   & + & {
     margin-top: 2px;
@@ -60,14 +70,20 @@ export const SubTitle = styled.h2`
 export const Title = styled.h1`
   top: 50%;
   left: 50%;
-  width: 95%;
+  width: 100%;
   margin: 0;
-  padding: 0 10%;
+  padding: 0 4rem;
   text-align: center;
-  font-size: 2.625rem;
-  line-height: 45px;
+  font-size: 4rem;
+  line-height: 100%;
+  letter-spacing: -0.02em;
   transform: translate(-50%, -50%);
   z-index: 99;
+
+  ${media.mobile`
+    padding: 0 2.8rem;
+    font-size: 3.6rem;
+  `}
 `;
 
 export const BackgroundImg = styled.img<{ index: number }>`
@@ -96,7 +112,7 @@ export const BackgroundImg = styled.img<{ index: number }>`
         return css`
           bottom: 20px;
           left: 50%;
-          width: 106px;
+          width: 5.875rem;
           transform: translateX(-50%);
         `;
     }

@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
       font-size: 16px;
     `};
     ${media.mobile`
-      font-size: 14px;
+      font-size: 13px;
     `};
   }
 

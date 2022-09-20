@@ -1,8 +1,8 @@
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 
 import * as SC from './ResultPage.style';
-import { saveIcon, staticLogo } from 'src/assets';
-import { Instagram, Kakao } from 'src/assets/svg';
+import { saveIcon } from 'src/assets';
+import { Instagram, Kakao, StaticLogo } from 'src/assets/svg';
 import isCorrectType from 'src/utils/isCorrectType';
 import { useCreateResult } from 'src/hooks/useCreateResult';
 import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
@@ -25,16 +25,15 @@ const ResultPage = () => {
   return (
     <SC.Container ref={containerRef} height={height}>
       <SC.Wrapper>
-        <SC.ResultTitle>번역을 완성했어요!</SC.ResultTitle>
+        <SC.ResultTitle>제주일름 완성!🥳</SC.ResultTitle>
 
         {/* TODO: 결과 컴포넌트 분리 */}
         <SC.ResultContainer ref={exportImgRef}>
           <SC.SubTitleWrapper>
             <SC.SubTitle>
               {isCorrectType(original, 'string', handleIncorrect)}
-              {type === 'name' ? '님의' : '의'}
+              {type === 'name' ? '님의' : '의'} 제주도 {type === 'name' ? '이름' : '방언'}은
             </SC.SubTitle>
-            <SC.SubTitle>제주도 {type === 'name' ? '이름' : '방언'}은</SC.SubTitle>
           </SC.SubTitleWrapper>
           <SC.Title>{isCorrectType(result, 'string', handleIncorrect)}</SC.Title>
           <SC.BackgroundImg
@@ -52,7 +51,7 @@ const ResultPage = () => {
             index={3}
             alt='result page background bottom image'
           />
-          <SC.BackgroundImg src={staticLogo} index={4} alt='result page logo image' />
+          <SC.BackgroundImg src={StaticLogo} index={4} alt='result page logo image' />
         </SC.ResultContainer>
 
         <SC.SaveButton onClick={exportComponentToPNG}>
@@ -63,7 +62,7 @@ const ResultPage = () => {
           친구들에게 <strong>제주일름</strong> 알려주기
         </SC.ShareText>
         <SC.ShareButtonContainer>
-          <a href='https://www.instagram.com/'>
+          <a href='https://www.instagram.com/jejuileum'>
             <SC.ShareButton color='#FF3981'>
               <Instagram />
             </SC.ShareButton>
