@@ -2,7 +2,7 @@ import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } fr
 
 import * as SC from './ResultPage.style';
 import { saveIcon } from 'src/assets';
-import { Instagram, Kakao, StaticLogo } from 'src/assets/svg';
+import { Instagram, Kakao, StaticLogo, CopyIcon, RotateLeft, GoormLogo } from 'src/assets/svg';
 import isCorrectType from 'src/utils/isCorrectType';
 import { useCreateResult } from 'src/hooks/useCreateResult';
 import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
@@ -18,6 +18,7 @@ const ResultPage = () => {
     exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
+    copyUrl,
   } = useCreateResult();
 
   const { containerRef, height } = useResponsiveHeight();
@@ -54,19 +55,29 @@ const ResultPage = () => {
           <SC.BackgroundImg src={StaticLogo} index={4} alt='result page logo image' />
         </SC.ResultContainer>
 
+        <SC.ExplanationText>
+          {isCorrectType(original, 'string', handleIncorrect)}님의 제주일름은{' '}
+          {isCorrectType(result, 'string', handleIncorrect)}예요!
+          <br />
+          독특하고 특별한 나만의 제주도 이름, 어떠신가요?
+        </SC.ExplanationText>
+        <SC.ExplanationText>
+          입력하신 &apos;<strong>빛나다</strong>&apos;는 제주어로 &apos;<strong>반착이</strong>
+          &apos;
+          <br /> &apos;<strong>착한</strong>&apos;은 &apos;<strong>뜩가</strong>&apos;로
+          번역되었어요.
+        </SC.ExplanationText>
         <SC.SaveButton onClick={exportComponentToPNG}>
-          이미지 저장
+          제주일름 저장하기
           <img src={saveIcon} />
         </SC.SaveButton>
-        <SC.ShareText>
-          친구들에게 <strong>제주일름</strong> 알려주기
-        </SC.ShareText>
+        <SC.ShareText>결과화면 공유하기</SC.ShareText>
         <SC.ShareButtonContainer>
-          <a href='https://www.instagram.com/jejuileum'>
+          {/* <a href='https://www.instagram.com/jejuileum'>
             <SC.ShareButton color='#FF3981'>
               <Instagram />
             </SC.ShareButton>
-          </a>
+          </a> */}
           <SC.ShareButton onClick={handleKakaoShare} id='kakaoButton' color='#FDBA0E;'>
             <Kakao />
           </SC.ShareButton>
@@ -76,8 +87,45 @@ const ResultPage = () => {
           <TwitterShareButton url={process.env.REACT_APP_SERVICE_URL}>
             <TwitterIcon size={64} round />
           </TwitterShareButton>
+          <SC.ShareButton onClick={copyUrl} color='rgba(255, 255, 255, 0.15);'>
+            <img src={CopyIcon} />
+          </SC.ShareButton>
         </SC.ShareButtonContainer>
-        <SC.RestartButton onClick={handleRestart}>다시 만들기</SC.RestartButton>
+        <SC.RestartButton onClick={handleRestart}>
+          다시 만들기
+          <RotateLeft width={20} />
+        </SC.RestartButton>
+        <SC.DivideLine />
+        <footer
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <a href='https://www.instagram.com/jejuileum/'>
+            <img src={StaticLogo} alt='footer logo image' style={{ width: '114px' }} />
+          </a>
+          <div style={{ textAlign: 'center' }}>
+            <SC.ExplanationText opacity={0.8}>
+              조금씩 잊혀져가는 제주어를 위해
+              <br />
+              제주어를 쉽고 재미있게 즐길 수 있도록
+              <br />
+              제주일름은 노력합니다.
+            </SC.ExplanationText>
+          </div>
+          <SC.ExplanationText opacity={0.4}>
+            더 많은 제주어를{' '}
+            <a href='https://www.jeju.go.kr/culture/dialect/dictionary.htm'>방언사전</a>에서
+            찾아보세요!
+          </SC.ExplanationText>
+          <a href='https://9oormthon.goorm.io/' style={{ marginTop: '41px' }}>
+            <GoormLogo width={104} />
+          </a>
+          <SC.LightText>powered by 9oormthon</SC.LightText>
+        </footer>
       </SC.Wrapper>
     </SC.Container>
   );

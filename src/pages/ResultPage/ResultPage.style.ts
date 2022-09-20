@@ -30,9 +30,10 @@ export const ResultContainer = styled.div`
   position: relative;
   width: 100%;
   height: 0;
-  margin-top: 25px;
+  margin-top: 33px;
   padding-top: 100%;
   background-color: #ffffff;
+  filter: drop-shadow(10px 10px 30px #003078);
 
   > * {
     position: absolute;
@@ -119,14 +120,45 @@ export const BackgroundImg = styled.img<{ index: number }>`
   }}
 `;
 
+export const ExplanationText = styled.p<{ opacity?: number }>`
+  margin: 0;
+  margin-top: 30px;
+  color: #ffffff;
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+
+  > strong {
+    color: ${({ theme }) => theme.color.cyan};
+  }
+
+  ${({ opacity }) =>
+    opacity &&
+    css`
+      margin-top: 26px;
+      font-family: 'Pretendard-Light', sans-serif;
+      font-weight: 300;
+      opacity: ${opacity};
+
+      > a {
+        font-family: 'Pretendard-Light', sans-serif;
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    `}
+`;
+
 export const SaveButton = styled.button`
   width: 100%;
   height: 70px;
+  margin-top: 30px;
   padding: 15px 0;
-  background-color: #445982;
+  background-color: ${({ theme }) => theme.color.orange};
+  border-radius: 8px;
   color: #ffffff;
-  font-size: 22px;
-  line-height: 42px;
+  font-size: 25px;
+  line-height: 100%;
   letter-spacing: -0.02em;
 
   > img {
@@ -139,21 +171,19 @@ export const SaveButton = styled.button`
 `;
 
 export const ShareText = styled.p`
-  margin-top: 20px;
-  text-align: center;
+  margin-top: 40px;
   color: #ffffff;
-  font-size: 19px;
-  line-height: 42px;
-  letter-spacing: 0.02em;
-
-  strong {
-    font-family: 'GmarketSansBold', sans-serif;
-  }
+  font-family: 'GmarketSansBold', sans-serif;
+  font-size: 26px;
+  line-height: 26px;
+  letter-spacing: -0.02em;
 `;
 
 export const ShareButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  height: 64px;
+  margin-top: 25px;
 
   button:not(:first-child) {
     margin-left: 15px;
@@ -162,23 +192,56 @@ export const ShareButtonContainer = styled.div`
 
 export const ShareButton = styled.button<{ color: string }>`
   display: flex;
-  width: 62px;
-  height: 62px;
+  width: 64px;
+  height: 100%;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+  padding: 0 13px;
   background-color: ${({ color }) => color};
 `;
 
 export const RestartButton = styled.button`
   width: 100%;
   height: 65px;
-  margin: 20px 0;
-  border-radius: 88px;
-  background-color: ${({ theme }) => theme.color.orange};
+  margin-top: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
   color: #ffffff;
-  font-family: 'GmarketSansBold', sans-serif;
-  font-size: 26px;
-  line-height: 26px;
+  font-size: 25px;
+  line-height: 100%;
   letter-spacing: -0.02em;
+
+  > svg {
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+`;
+
+export const DivideLine = styled.div`
+  position: relative;
+  width: 100%;
+  height: 1px;
+  margin: 40px 0;
+  background-color: #002f77;
+
+  ::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    opacity: 0.1;
+  }
+`;
+
+export const LightText = styled.p`
+  margin: 0 0 40px 0;
+  color: #ffffff;
+  opacity: 0.4;
+  font-family: 'GmarketSansLight', sans-serif;
+
+  ${media.mobile`
+    font-size: 16px;
+  `}
 `;
