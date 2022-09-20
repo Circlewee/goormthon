@@ -63,12 +63,12 @@ const ResultPage = () => {
           <br />
           독특하고 특별한 나만의 제주도 이름, 어떠신가요?
         </SC.ExplanationText>
-        <SC.ExplanationText>
+        {/* <SC.ExplanationText>
           입력하신 &apos;<strong>빛나다</strong>&apos;는 제주어로 &apos;<strong>반착이</strong>
           &apos;
           <br /> &apos;<strong>착한</strong>&apos;은 &apos;<strong>뜩가</strong>&apos;로
           번역되었어요.
-        </SC.ExplanationText>
+        </SC.ExplanationText> */}
         <SC.SaveButton onClick={exportComponentToPNG}>
           제주일름 저장하기
           <img src={saveIcon} />
