@@ -24,7 +24,7 @@ const BirthdayPage = () => {
   const { handleClick, userData, setUserData } = useSelectBox();
 
   useLayoutEffect(() => {
-    setDeviceHeight(window.innerHeight - 280.89);
+    setDeviceHeight(window.innerHeight - 250.89);
   }, []);
 
   return (
@@ -51,7 +51,7 @@ const BirthdayPage = () => {
             />
           </SC.InputWrapper>
         </SC.CustomForm>
-        <SC.SubmitButton type='button' onClick={handleClick}>
+        <SC.SubmitButton type='button' onClick={handleClick} disabled={false}>
           제주일름 만들기
         </SC.SubmitButton>
       </SC.Wrapper>
