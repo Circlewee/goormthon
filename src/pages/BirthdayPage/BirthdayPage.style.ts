@@ -9,7 +9,6 @@ export const Wrapper = styled.div<{ height?: number }>`
   justify-content: space-between;
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.lightBlue};
-  overflow: hidden;
 `;
 
 export const CustomForm = styled.div`
