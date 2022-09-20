@@ -85,6 +85,8 @@ export const AddInputButton = styled.button`
 `;
 
 export const SubmitButton = styled.button<{ disabled: boolean }>`
+  position: sticky;
+  bottom: 40px;
   width: 100%;
   margin: 40px 0;
   padding: 25px 0;

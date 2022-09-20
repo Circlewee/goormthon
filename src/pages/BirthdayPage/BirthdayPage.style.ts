@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div<{ height?: number }>`
   width: 100%;
@@ -37,16 +37,27 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button<{ disabled: boolean }>`
+  position: sticky;
+  bottom: 40px;
   width: 100%;
   margin-top: 50px;
   margin-bottom: 40px;
   padding: 25px 0;
   border-radius: 88px;
   background-color: ${({ theme }) => theme.color.orange};
+  box-shadow: 0 3px 0 ${({ theme }) => theme.color.darkOrange};
   color: #ffffff;
   font-family: 'GmarketSansBold', sans-serif;
   font-size: 26px;
   line-height: 26px;
   letter-spacing: -0.02em;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: #c8c8c8;
+      color: #989898;
+      box-shadow: 0px 3px 0px #9d9d9d;
+    `}
 `;
