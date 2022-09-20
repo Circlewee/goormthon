@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
@@ -18,6 +18,7 @@ const useCustomForm = () => {
   const toast = useToast();
   const setRequestState = useSetRecoilState(requestStateAtom);
   const navigate = useNavigate();
+  const [isCorrect, setIsCorrect] = useState(false);
 
   const customForm = useForm<FormType>({
     mode: 'onChange',
@@ -25,11 +26,12 @@ const useCustomForm = () => {
       name: [{ mean: '' }, { mean: '' }],
     },
   });
-
   const customFieldArray = useFieldArray({
     name: 'name',
     control: customForm.control,
   });
+
+  const firstInputWatch = customForm.watch('name.0.mean');
 
   const addInputElement = () => {
     customFieldArray.append({ mean: '' });
@@ -48,7 +50,7 @@ const useCustomForm = () => {
       return toast.error('본명을 입력해주세요.');
     }
 
-    if (meanArray.length === 0) {
+    if (!firstInputWatch) {
       return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
     }
 
@@ -78,9 +80,18 @@ const useCustomForm = () => {
     });
   };
 
+  useEffect(() => {
+    if (nameState.firstName && nameState.lastName && firstInputWatch) {
+      setIsCorrect(true);
+    } else {
+      isCorrect && setIsCorrect(false);
+    }
+  }, [nameState, firstInputWatch]);
+
   return {
     ...customForm,
     ...customFieldArray,
+    isCorrect,
     addInputElement,
     removeInputElement,
     submitAction,

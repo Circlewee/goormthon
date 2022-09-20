@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -84,7 +84,7 @@ export const AddInputButton = styled.button`
   letter-spacing: -0.02em;
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button<{ disabled: boolean }>`
   width: 100%;
   margin: 40px 0;
   padding: 25px 0;
@@ -96,4 +96,12 @@ export const SubmitButton = styled.button`
   font-size: 26px;
   line-height: 26px;
   letter-spacing: -0.02em;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: #c8c8c8;
+      color: #989898;
+      box-shadow: 0px 3px 0px #9d9d9d;
+    `}
 `;

@@ -8,6 +8,7 @@ const NamePage = () => {
     register,
     handleSubmit,
     fields,
+    isCorrect,
     addInputElement,
     removeInputElement,
     submitAction,
@@ -55,7 +56,9 @@ const NamePage = () => {
           <SC.AddInputButton type='button' onClick={addInputElement}>
             의미 추가하기
           </SC.AddInputButton>
-          <SC.SubmitButton type='submit'>제주일름 만들기</SC.SubmitButton>
+          <SC.SubmitButton type='submit' disabled={!isCorrect}>
+            제주일름 만들기
+          </SC.SubmitButton>
         </SC.Form>
       </SC.Wrapper>
     </main>
