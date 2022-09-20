@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
+import { exportComponentAsPNG } from 'react-component-export-image';
 
 import { requestStateAtom } from 'src/atom/atom';
 import useToast from 'src/hooks/useToast';
 import getResultImages from 'src/utils/getResultImages';
-import { downloadToPNG } from '../utils/downloadToPNG';
 
 // TODO: 결과와 공유 로직을 분리
 const useCreateResult = () => {
@@ -46,8 +46,10 @@ const useCreateResult = () => {
   };
 
   const exportComponentToPNG = () => {
-    downloadToPNG(exportImgRef, {
+    if (!exportImgRef || !exportImgRef.current) return;
+    exportComponentAsPNG(exportImgRef, {
       fileName: `${original}_jejuileum`,
+      html2CanvasOptions: { scale: 440 / exportImgRef.current.offsetWidth },
     });
   };
 
