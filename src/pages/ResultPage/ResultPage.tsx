@@ -19,6 +19,8 @@ const ResultPage = () => {
     handleKakaoShare,
     handleRestart,
     copyUrl,
+    toastSuccessMessage,
+    resultUrl,
   } = useCreateResult();
 
   const { containerRef, height } = useResponsiveHeight();
@@ -81,10 +83,10 @@ const ResultPage = () => {
           <SC.ShareButton onClick={handleKakaoShare} id='kakaoButton' color='#FDBA0E;'>
             <Kakao />
           </SC.ShareButton>
-          <FacebookShareButton url={process.env.REACT_APP_SERVICE_URL}>
+          <FacebookShareButton url={resultUrl} onShareWindowClose={toastSuccessMessage}>
             <FacebookIcon size={64} round />
           </FacebookShareButton>
-          <TwitterShareButton url={process.env.REACT_APP_SERVICE_URL}>
+          <TwitterShareButton url={window.location.href} onShareWindowClose={toastSuccessMessage}>
             <TwitterIcon size={64} round />
           </TwitterShareButton>
           <SC.ShareButton onClick={copyUrl} color='rgba(255, 255, 255, 0.15);'>
