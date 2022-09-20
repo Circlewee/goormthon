@@ -75,6 +75,11 @@ const useCreateResult = () => {
     navigate('/name');
   };
 
+  const copyUrl = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success('주소가 복사되었습니다.');
+  };
+
   return {
     exportImgRef,
     type,
@@ -85,6 +90,7 @@ const useCreateResult = () => {
     exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
+    copyUrl,
   };
 };
 
