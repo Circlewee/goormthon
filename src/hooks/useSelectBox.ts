@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
@@ -38,7 +38,11 @@ const useSelectBox = () => {
     );
   };
 
-  return { handleClick, userData, setUserData };
+  const isCorrect = useMemo(() => {
+    return userData.month !== '선택' && userData.date !== '선택';
+  }, [userData]);
+
+  return { handleClick, isCorrect, userData, setUserData };
 };
 
 export { useSelectBox };

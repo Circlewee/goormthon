@@ -38,7 +38,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const SubmitButton = styled.button<{ disabled: boolean }>`
-  position: sticky;
   bottom: 40px;
   width: 100%;
   margin-top: 50px;
