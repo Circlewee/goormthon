@@ -41,7 +41,7 @@ export const DivideLine = styled.div`
 export const ExplanationText = styled.p`
   margin: 20px 0 0 0;
   color: #ffffff;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Pretendard-Regular', sans-serif;
   font-size: 20px;
   line-height: 28px;
   letter-spacing: -0.02em;
