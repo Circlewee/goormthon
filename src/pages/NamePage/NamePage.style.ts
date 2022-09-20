@@ -22,11 +22,20 @@ export const RealNameContainer = styled.div`
 `;
 
 export const DivideLine = styled.div`
+  position: relative;
   width: 100%;
   height: 1px;
   margin-top: 30px;
-  background-color: #0e3d97;
-  opacity: 0.5;
+  background-color: #004cbf;
+
+  ::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    opacity: 0.1;
+  }
 `;
 
 export const ExplanationText = styled.p`
@@ -39,7 +48,7 @@ export const ExplanationText = styled.p`
   text-align: center;
 
   > strong {
-    color: #c4e4f2;
+    color: ${({ theme }) => theme.color.cyan};
   }
 `;
 
@@ -56,8 +65,8 @@ export const DeleteButton = styled.button`
   width: 70px;
   height: 56px;
   margin-left: 10px;
-  border-radius: 6px;
-  background-color: #445982;
+  border-radius: 8px;
+  background-color: #9dbdfc;
   color: #ffffff;
   font-size: 18px;
   line-height: 18px;
@@ -67,8 +76,8 @@ export const AddInputButton = styled.button`
   width: 100%;
   margin: 20px 0 0 0;
   padding: 18px 0;
-  background-color: #9dbdfc;
-  border-radius: 6px;
+  background-color: #003d99;
+  border-radius: 8px;
   color: #ffffff;
   font-size: 18px;
   line-height: 18px;
@@ -81,6 +90,7 @@ export const SubmitButton = styled.button`
   padding: 25px 0;
   border-radius: 88px;
   background-color: ${({ theme }) => theme.color.orange};
+  box-shadow: 0 3px 0 ${({ theme }) => theme.color.darkOrange};
   color: #ffffff;
   font-family: 'GmarketSansBold', sans-serif;
   font-size: 26px;
