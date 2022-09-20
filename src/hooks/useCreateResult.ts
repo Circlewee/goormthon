@@ -76,8 +76,31 @@ const useCreateResult = () => {
   };
 
   const copyUrl = () => {
-    navigator.clipboard.writeText(window.location.href);
-    toast.success('주소가 복사되었습니다.');
+    // 흐음 1.
+    if (navigator.clipboard) {
+      // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
+      navigator.clipboard
+        .writeText(window.location.href)
+        .then(() => {
+          toast.success('주소가 복사되었습니다.');
+        })
+        .catch(() => {
+          toast.error('복사를 다시 시도해주세요.');
+        });
+    } else {
+      const textarea = document.createElement('textarea');
+      textarea.value = window.location.href;
+      textarea.style.top = '0';
+      textarea.style.left = '0';
+      textarea.style.position = 'fixed';
+
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      toast.success('주소가 복사되었습니다.');
+    }
   };
 
   return {
