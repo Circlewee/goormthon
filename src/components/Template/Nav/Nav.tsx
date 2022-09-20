@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import * as SC from './Nav.style';
 
@@ -8,12 +8,12 @@ const Nav = () => {
   return (
     <SC.Nav>
       <SC.Wrapper>
-        <Link to='/name'>
+        <SC.StyledLink to='/name' selected={location.pathname === '/name'}>
           <SC.LinkButton selected={location.pathname === '/name'}>이름</SC.LinkButton>
-        </Link>
-        <Link to='/birthday'>
+        </SC.StyledLink>
+        <SC.StyledLink to='/birthday' selected={location.pathname === '/birthday'}>
           <SC.LinkButton selected={location.pathname === '/birthday'}>생일</SC.LinkButton>
-        </Link>
+        </SC.StyledLink>
       </SC.Wrapper>
     </SC.Nav>
   );
