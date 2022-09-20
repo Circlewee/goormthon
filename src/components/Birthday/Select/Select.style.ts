@@ -1,13 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
-
-const rotate180 = keyframes`
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-`;
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div<{ isShow: boolean; disabled: boolean }>`
   display: flex;
@@ -16,6 +7,13 @@ export const Wrapper = styled.div<{ isShow: boolean; disabled: boolean }>`
   height: 56px;
   padding: 10px 20px;
   background: #ffffff;
+  ${({ isShow }) =>
+    isShow &&
+    css`
+      border-width: 2px 2px 0px 2px;
+      border-style: solid;
+      border-color: #00bbf5;
+    `}
   border-radius: ${({ isShow }) => (isShow ? '0 5px 0 0' : '0 5px 5px 5px')};
   justify-content: space-between;
   align-items: center;
@@ -38,23 +36,18 @@ export const DropDownImg = styled.img<{ isShow: boolean }>`
   width: 14px;
   height: auto;
   margin-top: -3px;
-
-  /* ${(props) =>
-    props.isShow &&
-    css`
-      transform: rotate(180deg);
-      animation: ${rotate180} 0.3s;
-    `} */
 `;
 
-export const DropDownBox = styled.div`
+export const DropDownBox = styled.div<{ isShow: boolean }>`
   position: absolute;
-  top: 56px;
-  left: 0;
-  width: 100%;
+  top: ${({ isShow }) => (isShow ? 54 : 56)}px;
+  left: -2px;
+  width: 102.25%;
   height: 224px;
   background-color: #ffffff;
-  border-radius: 0px 0px 5px 5px;
+  border: 2px solid ${({ theme }) => theme.color.cyan};
+  border-width: 0 2px 2px 2px;
+  border-radius: 0px 0px 8px 8px;
   overflow: scroll;
 `;
 

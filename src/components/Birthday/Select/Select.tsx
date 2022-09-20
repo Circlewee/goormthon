@@ -48,7 +48,7 @@ const SelectBox = ({ dataList, type, userData, setUserData }: SelectBoxProps) =>
       <SC.SelectedText isInit={userData[type] === '선택'}>{userData[type]}</SC.SelectedText>
       <SC.DropDownImg src={dropIcon} isShow={isShow} alt='dropdown icon' />
       {isShow && (
-        <SC.DropDownBox>
+        <SC.DropDownBox isShow={isShow}>
           {dataList.map((data) => (
             <SC.DropDownItem key={nanoid()} onClick={handleSelect(data)}>
               {data}
