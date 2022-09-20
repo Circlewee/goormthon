@@ -42,8 +42,10 @@ export const ExplanationText = styled.p`
   height: 50px;
   margin: 20px 0 0 0;
   color: #ffffff;
-  font-size: 17px;
-  line-height: 21px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: -0.02em;
   text-align: center;
 

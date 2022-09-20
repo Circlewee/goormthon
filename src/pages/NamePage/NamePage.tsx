@@ -2,6 +2,7 @@ import * as SC from './NamePage.style';
 import { Label } from 'src/components/Common/Label';
 import { Input } from 'src/components/Common/Input';
 import { useCustomForm } from 'src/hooks/useCustomForm';
+import { Emoji } from 'src/components/Common/Emoji';
 
 const NamePage = () => {
   const {
@@ -33,6 +34,7 @@ const NamePage = () => {
         <SC.Form onSubmit={handleSubmit(submitAction)}>
           <SC.ExplanationText>
             이름의 <strong>의미</strong>를 문장으로 작성해주세요.
+            <Emoji emoji='👇' />
           </SC.ExplanationText>
           {fields.map((field, index) => {
             return (
