@@ -37,7 +37,7 @@ const BirthdayPage = () => {
             <Emoji emoji='📅' />
             생일 이외에 제주어로 바꾸고 싶은
             <br />
-            의미있는 <strong>날짜</strong>가 있나요?
+            의미있는 <strong>날짜</strong>도 좋아요!
           </SC.ExplanationText>
           <SC.CustomForm>
             <SC.InputWrapper>
