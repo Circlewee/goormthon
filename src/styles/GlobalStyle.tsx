@@ -61,16 +61,6 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     border-radius: 2px;
     outline: none;
-
-    /* :-webkit-autofill,
-    :-webkit-autofill:hover,
-    :-webkit-autofill:focus,
-    :-webkit-autofill:active {
-      transition: background-color 5000s ease-in-out 0s;
-      -webkit-transition: background-color 9999s ease-out;
-      -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-      box-shadow: 0 0 0px white inset !important;
-    } */
   }
 
   button{
@@ -85,6 +75,10 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     width: 100%;
     height: 100%;
+  }
+
+  h1, h2, h3 {
+    font-family: 'GmarketSansBold', sans-serif;
   }
 `;
 
