@@ -12,7 +12,7 @@ interface InputProps {
 
 const Input = ({ id, placeholder, width, register, onChange }: InputProps) => {
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <SC.InputWrapper>
       <SC.Input
         id={id}
         placeholder={placeholder}
@@ -21,7 +21,7 @@ const Input = ({ id, placeholder, width, register, onChange }: InputProps) => {
         type='text'
         {...register}
       />
-    </div>
+    </SC.InputWrapper>
   );
 };
 

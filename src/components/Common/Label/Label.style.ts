@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Label = styled.label`
   display: inline-block;
-  padding: 6px 10px;
+  padding: 5px 15px;
   border-radius: 8px 8px 0px 0px;
   background-color: ${({ theme }) => theme.color.darkBlue};
   color: #ffffff;
