@@ -39,7 +39,6 @@ export const DivideLine = styled.div`
 `;
 
 export const ExplanationText = styled.p`
-  height: 50px;
   margin: 20px 0 0 0;
   color: #ffffff;
   font-family: 'Noto Sans KR', sans-serif;

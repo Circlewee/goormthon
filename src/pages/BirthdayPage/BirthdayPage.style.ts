@@ -1,31 +1,33 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div<{ height?: number }>`
+  display: flex;
   width: 100%;
   max-width: 500px;
   height: ${(props) => props.height}px;
   padding: 0 30px;
+  justify-content: space-between;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.color.lightBlue};
   overflow: hidden;
-  touch-action: none;
 `;
 
 export const CustomForm = styled.div`
   display: flex;
-  margin-top: 16px;
+  margin-top: 25px;
 `;
 
 export const ExplanationText = styled.p`
-  height: 50px;
   margin: 30px 0 0 0;
   color: #ffffff;
-  font-size: 17px;
-  line-height: 50px;
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: -0.02em;
   text-align: center;
 
   > strong {
-    color: #c4e4f2;
+    color: ${({ theme }) => theme.color.cyan};
   }
 `;
 
@@ -37,8 +39,7 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const SubmitButton = styled.button<{ disabled: boolean }>`
-  bottom: 40px;
+export const SubmitButton = styled.button<{ disabled: boolean; deviceHeight: number | undefined }>`
   width: 100%;
   margin-top: 50px;
   margin-bottom: 40px;
