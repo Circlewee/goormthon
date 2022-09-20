@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   max-width: 500px;
-  padding-top: 56px;
   background-color: ${({ theme }) => theme.color.backgroundBlue};
   justify-content: center;
   align-items: flex-end;

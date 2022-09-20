@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import * as SC from './Header.style';
-import { logo, headerImg } from 'src/assets';
+import { logo } from 'src/assets';
+import { HeaderImg } from 'src/assets/svg';
 
 const Header = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
 
   return (
     <SC.Header>
-      <SC.BackgroundImg src={headerImg} alt='background image' />
+      <SC.BackgroundImg src={HeaderImg} alt='background image' />
       {!isImageLoaded ? (
         <SC.ReplaceTitle>제주일름</SC.ReplaceTitle>
       ) : (

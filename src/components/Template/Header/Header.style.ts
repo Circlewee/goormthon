@@ -14,8 +14,7 @@ export const BackgroundImg = styled.img`
   position: absolute;
   width: 100%;
   max-width: 500px;
-  height: 240px;
-  padding: 0 30px;
+  z-index: 0;
 `;
 
 export const ReplaceTitle = styled.h1`
@@ -26,6 +25,7 @@ export const ReplaceTitle = styled.h1`
   padding: 0 30px;
   font-family: ${(props) => props.theme.font.bold};
   font-size: 62px;
+  z-index: 1;
 `;
 
 export const TitleImg = styled.img`
@@ -34,10 +34,12 @@ export const TitleImg = styled.img`
   height: auto;
   margin: 60px 0 0 0;
   padding: 0 30px;
+  z-index: 1;
 `;
 
 export const SubTitle = styled.h2`
   margin: 0;
   font-size: 16px;
   line-height: 42px;
+  z-index: 1;
 `;

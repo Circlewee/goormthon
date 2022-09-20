@@ -2,7 +2,6 @@ export { default as bg1 } from './imgs/bg_1.jpg';
 export { default as bg2 } from './imgs/bg_2.jpg';
 export { default as bg4 } from './imgs/bg_4.jpg';
 export { default as dropIcon } from './imgs/drop_icon.png';
-export { default as headerImg } from './imgs/header_img.png';
 export { default as imgB1 } from './imgs/img_b_1.png';
 export { default as imgB2 } from './imgs/img_b_2.png';
 export { default as imgB3 } from './imgs/img_b_3.png';
