@@ -76,6 +76,7 @@ const GlobalStyle = createGlobalStyle`
   textarea {
     font-family: 'GmarketSansMedium', sans-serif;
     background-color: #ffffff;
+    margin: 0;
     border: none;
     border-radius: 2px;
     outline: none;
