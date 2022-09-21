@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
-import { exportComponentAsPNG } from 'react-component-export-image';
 
 import { requestStateAtom } from 'src/atom/atom';
 import useToast from 'src/hooks/useToast';
 import getResultImages from 'src/utils/getResultImages';
+import { downloadToPNG } from 'src/utils/downloadToPNG';
 
 // TODO: 결과와 공유 로직을 분리
 const useCreateResult = () => {
@@ -31,7 +31,6 @@ const useCreateResult = () => {
       content: {
         title: '제주오름',
         description: '내 이름을 제주 방언으로 해석해보자!',
-        // TODO: imageUrl 추가
         imageUrl:
           'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b9496f0-ee0c-4acd-8138-6958d110eb31/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220920%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220920T182852Z&X-Amz-Expires=86400&X-Amz-Signature=3c60abdef8c1784c3eb9ee216614640b3ceae88901e80f0cfa0e2dcd83647cc8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject',
         link: {
@@ -53,9 +52,11 @@ const useCreateResult = () => {
 
   const exportComponentToPNG = () => {
     if (!exportImgRef || !exportImgRef.current) return;
-    exportComponentAsPNG(exportImgRef, {
+    downloadToPNG(exportImgRef, {
       fileName: `${name}_jejuileum`,
-      html2CanvasOptions: { scale: 440 / exportImgRef.current.offsetWidth },
+      canvasOptions: {
+        scale: 440 / exportImgRef.current.offsetWidth,
+      },
     });
   };
 
@@ -86,9 +87,7 @@ const useCreateResult = () => {
   };
 
   const copyUrl = () => {
-    // 흐음 1.
     if (navigator.clipboard) {
-      // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
       navigator.clipboard
         .writeText(window.location.href)
         .then(() => {

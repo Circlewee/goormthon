@@ -1,4 +1,5 @@
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
+import { useLayoutEffect } from 'react';
 
 import * as SC from './ResultPage.style';
 import {
@@ -10,7 +11,6 @@ import {
   GoormLogo,
   SaveIcon,
 } from 'src/assets/svg';
-import isCorrectType from 'src/utils/isCorrectType';
 import { useCreateResult } from 'src/hooks/useCreateResult';
 import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
 
@@ -20,18 +20,24 @@ const ResultPage = () => {
     type,
     result,
     meanArray,
-    original,
     originalArray,
     name,
     resultImage,
-    resultUrl,
-    handleIncorrect,
     exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
     copyUrl,
-    toastSuccessMessage,
   } = useCreateResult();
+
+  useLayoutEffect(() => {
+    const body = document.querySelector('body');
+    if (!body) return;
+    body.style.lineHeight = '0';
+
+    return () => {
+      body.style.lineHeight = 'normal';
+    };
+  }, []);
 
   const { containerRef, height } = useResponsiveHeight();
 
@@ -39,16 +45,13 @@ const ResultPage = () => {
     <SC.Container ref={containerRef} height={height}>
       <SC.Wrapper>
         <SC.ResultTitle>제주일름 완성!🥳</SC.ResultTitle>
-
-        {/* TODO: 결과 컴포넌트 분리 */}
         <SC.ResultContainer ref={exportImgRef}>
-          <SC.SubTitleWrapper>
-            <SC.SubTitle>
-              {isCorrectType(name, 'string', handleIncorrect)}
-              {type === 'name' ? '님의' : '의'} 제주도 {type === 'name' ? '이름' : '방언'}은
-            </SC.SubTitle>
-          </SC.SubTitleWrapper>
-          <SC.Title>{isCorrectType(result, 'string', handleIncorrect)}</SC.Title>
+          <SC.SubTitle>
+            {`${name}${type === 'name' ? '님의' : '의'} 제주${
+              type === 'name' ? '도 이름' : ' 방언'
+            }은`}
+          </SC.SubTitle>
+          <SC.Title>{result}</SC.Title>
           <SC.BackgroundImg
             src={resultImage.background}
             index={1}
@@ -66,13 +69,9 @@ const ResultPage = () => {
           />
           <SC.BackgroundImg src={StaticLogo} index={4} alt='result page logo image' />
         </SC.ResultContainer>
-
         <SC.ExplanationText>
-          {isCorrectType(name, 'string', handleIncorrect)}
-          {type === 'name' ? '님의' : '의'} 제주일름은{' '}
-          {isCorrectType(result, 'string', handleIncorrect)}예요!
-          <br />
-          독특하고 특별한 나만의 제주도 이름, 어떠신가요?
+          <span>{`${name}${type === 'name' ? '님의' : '의'} 제주일름은 ${result}예요!`}</span>
+          <span>독특하고 특별한 나만의 제주도 이름, 어떠신가요?</span>
         </SC.ExplanationText>
         <SC.ExplanationText>
           입력하신{' '}
@@ -101,10 +100,10 @@ const ResultPage = () => {
           <SC.ShareButton onClick={handleKakaoShare} id='kakaoButton' color='#FDBA0E;'>
             <Kakao />
           </SC.ShareButton>
-          <FacebookShareButton url={resultUrl} onShareWindowClose={toastSuccessMessage}>
+          <FacebookShareButton url={window.location.href}>
             <FacebookIcon size={64} round />
           </FacebookShareButton>
-          <TwitterShareButton url={window.location.href} onShareWindowClose={toastSuccessMessage}>
+          <TwitterShareButton url={window.location.href}>
             <TwitterIcon size={64} round />
           </TwitterShareButton>
           <SC.ShareButton onClick={copyUrl} color='rgba(255, 255, 255, 0.15);'>
@@ -124,7 +123,7 @@ const ResultPage = () => {
             flexDirection: 'column',
           }}
         >
-          <a href='https://www.instagram.com/jejuileum/'>
+          <a href='https://www.instagram.com/jejuileum/' target='_blank' rel='noreferrer'>
             <img src={StaticLogo} alt='footer logo image' style={{ width: '114px' }} />
           </a>
           <div style={{ textAlign: 'center' }}>
@@ -138,9 +137,20 @@ const ResultPage = () => {
           </div>
           <SC.ExplanationText opacity={0.4}>
             더 많은 제주어가 궁금하다면?{' '}
-            <a href='https://www.jeju.go.kr/culture/dialect/dictionary.htm'>방언사전</a>
+            <a
+              href='https://www.jeju.go.kr/culture/dialect/dictionary.htm'
+              target='_blank'
+              rel='noreferrer'
+            >
+              방언사전
+            </a>
           </SC.ExplanationText>
-          <a href='https://9oormthon.goorm.io/' style={{ marginTop: '41px' }}>
+          <a
+            href='https://9oormthon.goorm.io/'
+            target='_blank'
+            style={{ marginTop: '41px' }}
+            rel='noreferrer'
+          >
             <GoormLogo width={104} />
           </a>
           <SC.LightText>powered by 9oormthon</SC.LightText>
