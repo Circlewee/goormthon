@@ -5,14 +5,14 @@ const customAxios = axios.create({
 });
 
 export const postTransfer = async (meanArray: string[]) => {
-  const data = await customAxios.post('/transfer', meanArray);
+  const data = await customAxios.post<string[]>('/transfer', meanArray);
   // const { data } = await customAxios.get('/transfer');
 
   return data;
 };
 
 export const postBirthTransfer = async (birthday: number[]) => {
-  const data = await customAxios.post('/birthtransfer', birthday);
+  const data = await customAxios.post<string[]>('/birthtransfer', birthday);
   // const { data } = await customAxios.get('/birthtransfer');
 
   return data;
