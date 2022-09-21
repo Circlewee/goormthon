@@ -23,14 +23,13 @@ export const ResultTitle = styled.h1`
   margin: 0;
   margin-top: 25px;
   font-size: 30px;
-  line-height: 34px;
 `;
 
 export const ResultContainer = styled.div`
   position: relative;
   width: 100%;
   height: 0;
-  margin-top: 33px;
+  margin-top: 30px;
   padding-top: 100%;
   background-color: #ffffff;
   filter: drop-shadow(10px 10px 30px #003078);
