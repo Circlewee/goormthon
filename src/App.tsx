@@ -10,9 +10,7 @@ import { Router } from './router';
 
 const App = () => {
   useEffect(() => {
-    if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-    }
+    // window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
   }, []);
 
   return (
