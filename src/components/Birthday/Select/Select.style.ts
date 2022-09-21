@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div<{ isShow: boolean; disabled: boolean }>`
   display: flex;
   position: relative;
-  width: 100%;
+  width: calc(100% - -4px);
   height: 56px;
   padding: 10px 20px;
   background: #ffffff;
