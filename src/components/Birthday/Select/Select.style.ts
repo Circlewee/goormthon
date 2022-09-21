@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div<{ isShow: boolean; disabled: boolean }>`
   display: flex;
   position: relative;
-  width: calc(100% - -4px);
+  width: 100%;
   height: 56px;
   padding: 10px 20px;
   background: #ffffff;
@@ -42,7 +42,7 @@ export const DropDownBox = styled.div<{ isShow: boolean }>`
   position: absolute;
   top: ${({ isShow }) => (isShow ? 54 : 56)}px;
   left: -2px;
-  width: 102.25%;
+  width: calc(100% - -4px);
   height: 224px;
   background-color: #ffffff;
   border: 2px solid ${({ theme }) => theme.color.cyan};
