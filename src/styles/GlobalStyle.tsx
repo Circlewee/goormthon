@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html {
+    background-color: ${({ theme }) => theme.color.backgroundBlue};
     ${media.desktop`
       font-size: 16px;
     `};
