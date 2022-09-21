@@ -38,7 +38,7 @@ const useSelectBox = () => {
       return `${str}+${mean}`;
     }, '');
     navigate(
-      `/result?result=${result}&original=${`${userData.month}+${userData.date}`}&name=${`${userData.month}${userData.date}`}&type=birthday`
+      `/result?result=${result}&original=${`${userData.month}+${userData.date}`}&name=${`${userData.month}+${userData.date}`}&type=birthday`
     );
   };
 
