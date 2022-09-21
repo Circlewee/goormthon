@@ -11,7 +11,6 @@ import {
   GoormLogo,
   SaveIcon,
 } from 'src/assets/svg';
-import isCorrectType from 'src/utils/isCorrectType';
 import { useCreateResult } from 'src/hooks/useCreateResult';
 import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
 
@@ -21,17 +20,13 @@ const ResultPage = () => {
     type,
     result,
     meanArray,
-    original,
     originalArray,
     name,
     resultImage,
-    resultUrl,
-    handleIncorrect,
     exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
     copyUrl,
-    toastSuccessMessage,
   } = useCreateResult();
 
   useLayoutEffect(() => {
