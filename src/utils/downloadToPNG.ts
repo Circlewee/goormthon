@@ -9,12 +9,9 @@ type DownloadOptions = {
 const defaultOptions: DownloadOptions = {
   fileName: 'default',
   imageQuality: 1,
-  canvasOptions: {
-    backgroundColor: 'transparent',
-  },
+  canvasOptions: {},
 };
 const IMAGETYPE = 'image/png';
-const EXPORTWIDTH = 500;
 
 const download = (url: string, filename: string) => {
   const linkElement = document.createElement('a');
@@ -37,7 +34,7 @@ const downloadToPNG = async (
   const canvas = await html2canvas(element.current, {
     ...defaultOptions,
     ...canvasOptions,
-    scale: EXPORTWIDTH / element.current.offsetWidth,
+    useCORS: true,
   });
 
   download(canvas.toDataURL(IMAGETYPE, imageQuality), fileName);
