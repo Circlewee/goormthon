@@ -151,19 +151,19 @@ export const ExplanationText = styled.p<{ opacity?: number }>`
 
 export const SaveButton = styled.button`
   width: 100%;
-  height: 70px;
+  height: 75px;
   margin-top: 30px;
   padding: 15px 0;
   background-color: ${({ theme }) => theme.color.orange};
   border-radius: 8px;
   color: #ffffff;
-  font-size: 25px;
+  font-size: 26px;
   line-height: 100%;
   letter-spacing: -0.02em;
 
   > svg {
     display: inline-block;
-    margin-left: 8px;
+    margin-top: -2px;
     vertical-align: middle;
   }
 `;
@@ -195,13 +195,13 @@ export const ShareButton = styled.button<{ color: string }>`
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-  padding: 0 13px;
+  padding: 0 10px;
   background-color: ${({ color }) => color};
 `;
 
 export const RestartButton = styled.button`
   width: 100%;
-  height: 65px;
+  height: 75px;
   margin-top: 40px;
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 8px;
@@ -211,7 +211,7 @@ export const RestartButton = styled.button`
   letter-spacing: -0.02em;
 
   > svg {
-    margin-left: 8px;
+    margin-top: -2px;
     vertical-align: middle;
   }
 `;

@@ -89,7 +89,7 @@ const ResultPage = () => {
         </SC.ExplanationText>
         <SC.SaveButton onClick={exportComponentToPNG}>
           제주일름 저장하기
-          <SaveIcon width={27} height={23} />
+          <SaveIcon />
         </SC.SaveButton>
         <SC.ShareText>결과화면 공유하기</SC.ShareText>
         <SC.ShareButtonContainer>
@@ -113,7 +113,7 @@ const ResultPage = () => {
         </SC.ShareButtonContainer>
         <SC.RestartButton onClick={handleRestart}>
           다시 만들기
-          <RotateLeft width={20} />
+          <RotateLeft />
         </SC.RestartButton>
         <SC.DivideLine />
         <footer
