@@ -74,14 +74,14 @@ const ResultPage = () => {
           <span>독특하고 특별한 나만의 제주도 이름, 어떠신가요?</span>
         </SC.ExplanationText>
         <SC.ExplanationText>
-          입력하신
+          입력하신{' '}
           {meanArray.map((mean, index) => {
             return (
-              <span key={index}>
+              <>
                 &apos;<strong>{originalArray[index]}</strong>&apos;은/는 제주어 &apos;
                 <strong>{mean}</strong>
-                &apos;(으)로
-              </span>
+                &apos;(으)로 {index !== meanArray.length - 1 && <br />}
+              </>
             );
           })}
           번역되었어요.

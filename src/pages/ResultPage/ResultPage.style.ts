@@ -125,13 +125,9 @@ export const ExplanationText = styled.div<{ opacity?: number }>`
   line-height: 32px;
   letter-spacing: -0.02em;
 
-  > span {
-    display: block;
-
-    > strong {
-      font-weight: normal;
-      color: ${({ theme }) => theme.color.cyan};
-    }
+  > strong {
+    font-weight: normal;
+    color: ${({ theme }) => theme.color.cyan};
   }
 
   ${({ opacity }) =>
