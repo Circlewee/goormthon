@@ -54,7 +54,7 @@ const useCreateResult = () => {
   const exportComponentToPNG = () => {
     if (!exportImgRef || !exportImgRef.current) return;
     exportComponentAsPNG(exportImgRef, {
-      fileName: `${original}_jejuileum`,
+      fileName: `${name}_jejuileum`,
       html2CanvasOptions: { scale: 440 / exportImgRef.current.offsetWidth },
     });
   };
