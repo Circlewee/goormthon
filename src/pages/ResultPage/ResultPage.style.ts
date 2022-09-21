@@ -161,11 +161,9 @@ export const SaveButton = styled.button`
   line-height: 100%;
   letter-spacing: -0.02em;
 
-  > img {
+  > svg {
     display: inline-block;
-    width: 30px;
-    height: auto;
-    margin-left: 7px;
+    margin-left: 8px;
     vertical-align: middle;
   }
 `;

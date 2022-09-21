@@ -1,8 +1,15 @@
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 
 import * as SC from './ResultPage.style';
-import { saveIcon } from 'src/assets';
-import { Instagram, Kakao, StaticLogo, CopyIcon, RotateLeft, GoormLogo } from 'src/assets/svg';
+import {
+  Instagram,
+  Kakao,
+  StaticLogo,
+  CopyIcon,
+  RotateLeft,
+  GoormLogo,
+  SaveIcon,
+} from 'src/assets/svg';
 import isCorrectType from 'src/utils/isCorrectType';
 import { useCreateResult } from 'src/hooks/useCreateResult';
 import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
@@ -82,7 +89,7 @@ const ResultPage = () => {
         </SC.ExplanationText>
         <SC.SaveButton onClick={exportComponentToPNG}>
           제주일름 저장하기
-          <img src={saveIcon} />
+          <SaveIcon width={27} height={23} />
         </SC.SaveButton>
         <SC.ShareText>결과화면 공유하기</SC.ShareText>
         <SC.ShareButtonContainer>
