@@ -137,9 +137,8 @@ const ResultPage = () => {
             </SC.ExplanationText>
           </div>
           <SC.ExplanationText opacity={0.4}>
-            더 많은 제주어를{' '}
-            <a href='https://www.jeju.go.kr/culture/dialect/dictionary.htm'>방언사전</a>에서
-            찾아보세요!
+            더 많은 제주어가 궁금하다면?{' '}
+            <a href='https://www.jeju.go.kr/culture/dialect/dictionary.htm'>방언사전</a>
           </SC.ExplanationText>
           <a href='https://9oormthon.goorm.io/' style={{ marginTop: '41px' }}>
             <GoormLogo width={104} />
