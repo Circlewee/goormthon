@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 500px;
+  min-height: calc(100vh - 250.89px);
   padding: 0 30px;
   background-color: ${({ theme }) => theme.color.lightBlue};
 `;
