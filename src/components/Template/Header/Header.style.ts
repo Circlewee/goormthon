@@ -38,8 +38,7 @@ export const TitleImg = styled.img`
 `;
 
 export const SubTitle = styled.h2`
-  margin: 0;
+  margin: 0 0 30px 0;
   font-size: 16px;
-  line-height: 42px;
   z-index: 1;
 `;
