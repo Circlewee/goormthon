@@ -33,8 +33,12 @@ const useSelectBox = () => {
     });
 
     const response = await postBirthTransfer(birthday);
+    const result = response.data.reduce((str, mean) => {
+      if (!str) return mean;
+      return `${str}+${mean}`;
+    }, '');
     navigate(
-      `/result?result=${response.data}&type=birthday&original=${userData.month + userData.date}`
+      `/result?result=${result}&original=${`${userData.month}+${userData.date}`}&name=${`${userData.month}${userData.date}`}&type=birthday`
     );
   };
 

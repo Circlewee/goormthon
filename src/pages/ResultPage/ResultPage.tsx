@@ -12,15 +12,18 @@ const ResultPage = () => {
     exportImgRef,
     type,
     result,
+    meanArray,
     original,
-    handleIncorrect,
+    originalArray,
+    name,
     resultImage,
+    resultUrl,
+    handleIncorrect,
     exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
     copyUrl,
     toastSuccessMessage,
-    resultUrl,
   } = useCreateResult();
 
   const { containerRef, height } = useResponsiveHeight();
@@ -34,7 +37,7 @@ const ResultPage = () => {
         <SC.ResultContainer ref={exportImgRef}>
           <SC.SubTitleWrapper>
             <SC.SubTitle>
-              {isCorrectType(original, 'string', handleIncorrect)}
+              {isCorrectType(name, 'string', handleIncorrect)}
               {type === 'name' ? '님의' : '의'} 제주도 {type === 'name' ? '이름' : '방언'}은
             </SC.SubTitle>
           </SC.SubTitleWrapper>
@@ -58,17 +61,25 @@ const ResultPage = () => {
         </SC.ResultContainer>
 
         <SC.ExplanationText>
-          {isCorrectType(original, 'string', handleIncorrect)}님의 제주일름은{' '}
+          {isCorrectType(name, 'string', handleIncorrect)}
+          {type === 'name' ? '님의' : '의'} 제주일름은{' '}
           {isCorrectType(result, 'string', handleIncorrect)}예요!
           <br />
           독특하고 특별한 나만의 제주도 이름, 어떠신가요?
         </SC.ExplanationText>
-        {/* <SC.ExplanationText>
-          입력하신 &apos;<strong>빛나다</strong>&apos;는 제주어로 &apos;<strong>반착이</strong>
-          &apos;
-          <br /> &apos;<strong>착한</strong>&apos;은 &apos;<strong>뜩가</strong>&apos;로
+        <SC.ExplanationText>
+          입력하신{' '}
+          {meanArray.map((mean, index) => {
+            return (
+              <>
+                &apos;<strong>{originalArray[index]}</strong>&apos;은/는 제주어 &apos;
+                <strong>{mean}</strong>
+                &apos;(으)로 {index !== meanArray.length - 1 && <br />}
+              </>
+            );
+          })}
           번역되었어요.
-        </SC.ExplanationText> */}
+        </SC.ExplanationText>
         <SC.SaveButton onClick={exportComponentToPNG}>
           제주일름 저장하기
           <img src={saveIcon} />

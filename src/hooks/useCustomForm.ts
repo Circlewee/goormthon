@@ -44,7 +44,8 @@ const useCustomForm = () => {
   };
 
   const submitAction = async (data: FormType) => {
-    const meanArray = data.name.map((name) => name.mean);
+    const dataArray = data.name.map((name) => name.mean);
+    const meanArray = dataArray.filter((data) => data !== '');
 
     if (!nameState.firstName || !nameState.lastName) {
       return toast.error('본명을 입력해주세요.');
@@ -61,10 +62,14 @@ const useCustomForm = () => {
     });
 
     const response = await postTransfer(meanArray);
+    const result = response.data.reduce((str, mean) => {
+      if (!str) return mean;
+      return `${str}+${mean}`;
+    }, '');
     navigate(
-      `/result?result=${response.data}&type=name&original=${
-        nameState.lastName + nameState.firstName
-      }`
+      `/result?result=${result}&original=${meanArray.join(
+        '+'
+      )}&name=${`${nameState.lastName}${nameState.firstName}`}&type=name`
     );
   };
 

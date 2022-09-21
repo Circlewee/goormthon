@@ -16,9 +16,14 @@ const useCreateResult = () => {
   const toast = useToast();
   const location = useLocation();
   const [resultImage, setResultImage] = useState({ background: '', imgT: '', imgB: '' });
-  const { result, type, original } = qs.parse(location.search, {
+  const { result, type, original, name } = qs.parse(location.search, {
     ignoreQueryPrefix: true,
-  });
+  }) as { result: string; type: string; original: string; name: string };
+
+  const meanArray = result.split(' ');
+  const mean = meanArray.join('');
+  const originalArray = original.split(' ');
+  const origin = originalArray.join('');
 
   const handleKakaoShare = () => {
     window.Kakao.Share.sendDefault({
@@ -111,16 +116,19 @@ const useCreateResult = () => {
   return {
     exportImgRef,
     type,
-    result,
-    original,
-    handleIncorrect,
+    result: mean,
+    meanArray,
+    original: origin,
+    originalArray,
+    name,
     resultImage,
+    resultUrl: window.location.href,
+    handleIncorrect,
     exportComponentToPNG,
     handleKakaoShare,
     handleRestart,
     copyUrl,
     toastSuccessMessage,
-    resultUrl: window.location.href,
   };
 };
 
