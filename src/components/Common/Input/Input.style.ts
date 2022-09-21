@@ -18,6 +18,10 @@ export const Input = styled.input<{ width?: number }>`
   :focus {
     border: 2px solid ${({ theme }) => theme.color.cyan};
   }
+
+  ::placeholder {
+    color: #bdbdbd;
+  }
 `;
 
 // TODO: input text 삭제 버튼 추가
