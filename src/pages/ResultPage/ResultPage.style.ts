@@ -130,6 +130,10 @@ export const ExplanationText = styled.div<{ opacity?: number }>`
     color: ${({ theme }) => theme.color.cyan};
   }
 
+  > span {
+    display: block;
+  }
+
   ${({ opacity }) =>
     opacity &&
     css`
