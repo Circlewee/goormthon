@@ -115,14 +115,7 @@ const ResultPage = () => {
           <RotateLeft />
         </SC.RestartButton>
         <SC.DivideLine />
-        <footer
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
-        >
+        <SC.ResultFooter>
           <a href='https://www.instagram.com/jejuileum/' target='_blank' rel='noreferrer'>
             <img src={StaticLogo} alt='footer logo image' style={{ width: '114px' }} />
           </a>
@@ -154,7 +147,7 @@ const ResultPage = () => {
             <GoormLogo width={104} />
           </a>
           <SC.LightText>powered by 9oormthon</SC.LightText>
-        </footer>
+        </SC.ResultFooter>
       </SC.Wrapper>
     </SC.Container>
   );

@@ -245,3 +245,10 @@ export const LightText = styled.p`
     font-size: 16px;
   `}
 `;
+
+export const ResultFooter = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
