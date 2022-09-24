@@ -9,9 +9,8 @@ export const Input = styled.input<{ width?: number }>`
   display: block;
   width: ${({ width }) => (width ? `${width}px` : '100%')};
   height: 53px;
-  padding-left: 10px;
+  padding: 2px 10px 0;
   font-size: 22px;
-  line-height: 22px;
   border: 2px solid #d9d9d9;
   border-radius: 0px 8px 8px 8px;
 
