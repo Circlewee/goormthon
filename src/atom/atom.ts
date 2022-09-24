@@ -10,3 +10,8 @@ export const requestStateAtom = atom<RequestStateType>({
   key: 'requestState',
   default: { firstName: '', lastName: '', isCorrect: false },
 });
+
+export const loadingStateAtom = atom<boolean>({
+  key: 'loadingState',
+  default: false,
+});
