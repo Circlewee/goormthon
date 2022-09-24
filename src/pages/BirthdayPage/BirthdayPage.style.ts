@@ -26,6 +26,7 @@ export const ExplanationText = styled.p`
   text-align: center;
 
   > strong {
+    font-family: 'Pretendard-Regular', sans-serif;
     color: ${({ theme }) => theme.color.cyan};
   }
 `;
