@@ -126,12 +126,14 @@ export const ExplanationText = styled.div<{ opacity?: number }>`
   letter-spacing: -0.02em;
 
   > strong {
+    font-family: 'Pretendard-Regular', sans-serif;
     font-weight: normal;
     color: ${({ theme }) => theme.color.cyan};
   }
 
   > span {
     display: block;
+    font-family: 'Pretendard-Regular', sans-serif;
   }
 
   ${({ opacity }) =>
