@@ -15,3 +15,4 @@ export { default as imgT6 } from './imgs/img_t_6.png';
 export { default as imgT7 } from './imgs/img_t_7.png';
 export { default as logo } from './imgs/logo.png';
 export { default as xIcon } from './imgs/x_icon.png';
+export { default as loadingAnimation } from './imgs/loading_animation.gif';
