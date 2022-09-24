@@ -23,7 +23,7 @@ const useCustomForm = () => {
   const customForm = useForm<FormType>({
     mode: 'onChange',
     defaultValues: {
-      name: [{ mean: '' }, { mean: '' }],
+      name: [{ mean: '' }],
     },
   });
   const customFieldArray = useFieldArray({
