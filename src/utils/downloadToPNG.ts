@@ -1,4 +1,5 @@
 import html2canvas, { Options } from 'html2canvas';
+import useToast from 'src/hooks/useToast';
 
 type DownloadOptions = {
   fileName: string;
@@ -22,9 +23,10 @@ const download = (url: string, filename: string) => {
   document.body.appendChild(linkElement);
   linkElement.click();
   document.body.removeChild(linkElement);
+  useToast().success('다운로드에 성공했습니다!');
 };
 
-const downloadToPNG = async (
+export const downloadToPNG = async (
   element: React.RefObject<HTMLElement> | null,
   options: DownloadOptions
 ) => {
@@ -39,5 +41,3 @@ const downloadToPNG = async (
 
   download(canvas.toDataURL(IMAGETYPE, imageQuality), fileName);
 };
-
-export { downloadToPNG };
