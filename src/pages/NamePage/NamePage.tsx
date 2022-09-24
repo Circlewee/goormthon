@@ -18,7 +18,6 @@ const NamePage = () => {
     realNameChange,
   } = useCustomForm();
 
-  // eslint-disable-next-line no-constant-condition
   return isLoading ? (
     <LoadingWithTitle />
   ) : (
