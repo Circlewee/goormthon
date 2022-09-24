@@ -38,21 +38,31 @@ const NamePage = () => {
           </SC.ExplanationText>
           {fields.map((field, index) => {
             return (
-              <SC.NameMeanContainer key={field.id}>
-                <Label htmlFor={`meanInput${index}`}>의미 {index + 1}</Label>
-                <SC.InputWrapper>
-                  <Input
-                    id={`meanInput${index}`}
-                    placeholder='예시) 빛나다, 착한 등'
-                    register={register(`name.${index}.mean` as const)}
-                  />
-                  {fields.length !== 1 && index === fields.length - 1 && (
-                    <SC.DeleteButton type='button' onClick={removeInputElement(index)}>
-                      삭제
-                    </SC.DeleteButton>
-                  )}
-                </SC.InputWrapper>
-              </SC.NameMeanContainer>
+              <>
+                <SC.NameMeanContainer key={field.id}>
+                  <Label htmlFor={`meanInput${index}`}>의미 {index + 1}</Label>
+                  <SC.InputWrapper>
+                    <Input
+                      id={`meanInput${index}`}
+                      placeholder='입력해주세요.'
+                      register={register(`name.${index}.mean` as const)}
+                    />
+                    {fields.length !== 1 && index === fields.length - 1 && (
+                      <SC.DeleteButton type='button' onClick={removeInputElement(index)}>
+                        삭제
+                      </SC.DeleteButton>
+                    )}
+                  </SC.InputWrapper>
+                </SC.NameMeanContainer>
+                {index === 0 && (
+                  <>
+                    <SC.ExtraText>
+                      <strong>TIP</strong> 짧은 문장으로 입력하면 정확도가 올라가요!
+                    </SC.ExtraText>
+                    <SC.ExtraText>예시) 빛=X / 반짝이다, 빛나는, 빛나다=O</SC.ExtraText>
+                  </>
+                )}
+              </>
             );
           })}
           <SC.AddInputButton type='button' onClick={addInputElement}>

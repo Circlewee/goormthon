@@ -73,6 +73,25 @@ export const DeleteButton = styled.button`
   line-height: 18px;
 `;
 
+export const ExtraText = styled.div`
+  margin-top: 10px;
+  color: #ffffff;
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+
+  > strong {
+    color: ${({ theme }) => theme.color.cyan};
+  }
+
+  & + & {
+    margin: 0;
+    color: #9dbdfc;
+  }
+`;
+
 export const AddInputButton = styled.button`
   width: 100%;
   margin: 20px 0 0 0;
