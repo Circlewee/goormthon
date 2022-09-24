@@ -33,7 +33,7 @@ export const ResultContainer = styled.div`
   margin-top: 30px;
   padding-top: 100%;
   background-color: #ffffff;
-  filter: drop-shadow(10px 10px 30px #003078);
+  filter: drop-shadow(rgb(0, 48, 120) 10px 10px 15px);
 
   > * {
     position: absolute;
