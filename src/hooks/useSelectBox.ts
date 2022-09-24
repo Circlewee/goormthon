@@ -28,10 +28,10 @@ const useSelectBox = () => {
     const birthday = [Number(userData.month.split('월')[0]), Number(userData.date.split('일')[0])];
 
     setRequestState({
-      firstName: userData.date,
-      lastName: userData.month,
+      realName: userData.month.split('월')[0] + '+' + userData.date.split('일')[0],
       isCorrect: true,
     });
+
     try {
       setLoading(true);
       const start = Date.now();

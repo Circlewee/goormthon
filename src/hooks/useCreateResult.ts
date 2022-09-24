@@ -65,15 +65,24 @@ const useCreateResult = () => {
   };
 
   useEffect(() => {
-    if (!result || result === '' || !type || type === '' || !original || original === '') {
+    if (
+      !result ||
+      result === '' ||
+      !type ||
+      type === '' ||
+      !original ||
+      original === '' ||
+      !name ||
+      name === ''
+    ) {
       navigate('/name');
       toast.error('잘못된 접근입니다.');
     }
 
     setResultImage(
       getResultImages(type as string, {
-        month: Number(requestState.lastName.split('월')[0]) - 1,
-        date: Number(requestState.lastName.split('일')[0]),
+        month: Number(requestState.realName.split('+')[0]) - 1,
+        date: Number(requestState.realName.split('+')[1]),
       })
     );
   }, []);

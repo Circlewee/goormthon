@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useSetRecoilState, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 
 import useToast from 'src/hooks/useToast';
-import { requestStateAtom, loadingStateAtom } from 'src/atom/atom';
+import { loadingStateAtom } from 'src/atom/atom';
 import { postTransfer } from 'src/api/api';
 
 export type FormType = {
@@ -14,9 +14,8 @@ export type FormType = {
 };
 
 const useCustomForm = () => {
-  const [nameState, setNameState] = useState({ firstName: '', lastName: '' });
+  const [nameState, setNameState] = useState({ realName: '' });
   const toast = useToast();
-  const setRequestState = useSetRecoilState(requestStateAtom);
   const [isLoading, setLoading] = useRecoilState(loadingStateAtom);
   const navigate = useNavigate();
   const [isCorrect, setIsCorrect] = useState(false);
@@ -48,18 +47,13 @@ const useCustomForm = () => {
     const dataArray = data.name.map((name) => name.mean);
     const meanArray = dataArray.filter((data) => data !== '');
 
-    if (!nameState.firstName || !nameState.lastName) {
+    if (!nameState.realName) {
       return toast.error('본명을 입력해주세요.');
     }
 
     if (!firstInputWatch) {
       return toast.error('반드시 한 개이상의 의미가 입력되어야 합니다.');
     }
-    setRequestState({
-      firstName: nameState.firstName,
-      lastName: nameState.lastName,
-      isCorrect: true,
-    });
 
     try {
       setLoading(true);
@@ -76,7 +70,7 @@ const useCustomForm = () => {
           navigate(
             `/result?result=${result}&original=${meanArray.join(
               '+'
-            )}&name=${`${nameState.lastName}${nameState.firstName}`}&type=name`
+            )}&name=${`${nameState.realName}`}&type=name`
           );
         }, 3000 - (end - start));
       } else {
@@ -88,7 +82,7 @@ const useCustomForm = () => {
         navigate(
           `/result?result=${result}&original=${meanArray.join(
             '+'
-          )}&name=${`${nameState.lastName}${nameState.firstName}`}&type=name`
+          )}&name=${`${nameState.realName}`}&type=name`
         );
       }
     } catch (err) {
@@ -97,20 +91,14 @@ const useCustomForm = () => {
     }
   };
 
-  const firstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const realNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameState((prevState) => {
-      return { ...prevState, firstName: e.target.value };
-    });
-  };
-
-  const lastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNameState((prevState) => {
-      return { ...prevState, lastName: e.target.value };
+      return { ...prevState, realName: e.target.value };
     });
   };
 
   useEffect(() => {
-    if (nameState.firstName && nameState.lastName && firstInputWatch) {
+    if (nameState.realName && firstInputWatch) {
       setIsCorrect(true);
     } else {
       isCorrect && setIsCorrect(false);
@@ -125,8 +113,7 @@ const useCustomForm = () => {
     addInputElement,
     removeInputElement,
     submitAction,
-    firstNameChange,
-    lastNameChange,
+    realNameChange,
   };
 };
 

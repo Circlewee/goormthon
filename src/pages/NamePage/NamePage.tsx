@@ -15,29 +15,25 @@ const NamePage = () => {
     addInputElement,
     removeInputElement,
     submitAction,
-    firstNameChange,
-    lastNameChange,
+    realNameChange,
   } = useCustomForm();
 
+  // eslint-disable-next-line no-constant-condition
   return isLoading ? (
     <LoadingWithTitle />
   ) : (
     <main>
       <SC.Wrapper>
         <SC.RealNameContainer>
-          <div>
-            <Label htmlFor='lastName'>성</Label>
-            <Input id='lastName' placeholder='성' width={102} onChange={lastNameChange} />
-          </div>
-          <div>
-            <Label htmlFor='firstName'>이름</Label>
-            <Input id='firstName' placeholder='이름' onChange={firstNameChange} />
+          <div style={{ width: '100%' }}>
+            <Label htmlFor='realName'>이름</Label>
+            <Input id='realName' placeholder='이름' onChange={realNameChange} />
           </div>
         </SC.RealNameContainer>
         <SC.DivideLine />
         <SC.Form onSubmit={handleSubmit(submitAction)}>
           <SC.ExplanationText>
-            이름의 <strong>의미</strong>를 문장으로 작성해주세요.
+            이름의 <strong>의미</strong>를 작성해주세요!
             <Emoji emoji='👇' />
           </SC.ExplanationText>
           {fields.map((field, index) => {
