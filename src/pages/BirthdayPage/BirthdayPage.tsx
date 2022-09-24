@@ -6,6 +6,7 @@ import { Select } from 'src/components/Birthday/Select';
 import getDateList from 'src/utils/getDateList';
 import { useSelectBox } from 'src/hooks/useSelectBox';
 import { Emoji } from 'src/components/Common/Emoji';
+import { LoadingWithTitle } from 'src/components/Common/Loading/LoadingWithTitle';
 
 const BirthdayPage = () => {
   const [deviceHeight, setDeviceHeight] = useState<number>();
@@ -23,13 +24,15 @@ const BirthdayPage = () => {
     '11월',
     '12월',
   ];
-  const { handleClick, isCorrect, userData, setUserData } = useSelectBox();
+  const { handleClick, isCorrect, userData, setUserData, isLoading } = useSelectBox();
 
   useLayoutEffect(() => {
     setDeviceHeight(window.innerHeight - 250.89);
   }, []);
 
-  return (
+  return isLoading ? (
+    <LoadingWithTitle />
+  ) : (
     <main>
       <SC.Wrapper height={deviceHeight}>
         <div>

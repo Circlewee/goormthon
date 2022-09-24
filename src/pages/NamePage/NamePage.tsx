@@ -3,6 +3,7 @@ import { Label } from 'src/components/Common/Label';
 import { Input } from 'src/components/Common/Input';
 import { useCustomForm } from 'src/hooks/useCustomForm';
 import { Emoji } from 'src/components/Common/Emoji';
+import { LoadingWithTitle } from 'src/components/Common/Loading/LoadingWithTitle';
 
 const NamePage = () => {
   const {
@@ -10,6 +11,7 @@ const NamePage = () => {
     handleSubmit,
     fields,
     isCorrect,
+    isLoading,
     addInputElement,
     removeInputElement,
     submitAction,
@@ -17,7 +19,9 @@ const NamePage = () => {
     lastNameChange,
   } = useCustomForm();
 
-  return (
+  return isLoading ? (
+    <LoadingWithTitle />
+  ) : (
     <main>
       <SC.Wrapper>
         <SC.RealNameContainer>
