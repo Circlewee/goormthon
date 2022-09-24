@@ -1,14 +1,13 @@
 import { atom } from 'recoil';
 
 interface RequestStateType {
-  firstName: string;
-  lastName: string;
+  realName: string;
   isCorrect: boolean;
 }
 
 export const requestStateAtom = atom<RequestStateType>({
   key: 'requestState',
-  default: { firstName: '', lastName: '', isCorrect: false },
+  default: { realName: '', isCorrect: false },
 });
 
 export const loadingStateAtom = atom<boolean>({
