@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
   min-height: calc(100vh - 250.89px);
   padding: 0 30px;
   background-color: ${({ theme }) => theme.color.lightBlue};
+
+  strong {
+    font-family: 'Pretendard-Regular', sans-serif;
+    color: ${({ theme }) => theme.color.cyan};
+  }
 `;
 
 export const Form = styled.form`
@@ -47,10 +52,6 @@ export const ExplanationText = styled.p`
   line-height: 28px;
   letter-spacing: -0.02em;
   text-align: center;
-
-  > strong {
-    color: ${({ theme }) => theme.color.cyan};
-  }
 `;
 
 export const NameMeanContainer = styled.div`
@@ -81,10 +82,6 @@ export const ExtraText = styled.div`
   font-size: 15px;
   line-height: 22px;
   letter-spacing: -0.02em;
-
-  > strong {
-    color: ${({ theme }) => theme.color.cyan};
-  }
 
   & + & {
     margin: 0;
