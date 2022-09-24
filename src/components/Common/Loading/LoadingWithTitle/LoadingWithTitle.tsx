@@ -1,3 +1,4 @@
+import { useLayoutEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { loadingStateAtom } from 'src/atom/atom';
@@ -6,15 +7,34 @@ import { loadingAnimation } from 'src/assets';
 
 const LoadingWithTitle = () => {
   const isLoading = useRecoilValue(loadingStateAtom);
+  const [dot, setDot] = useState(1);
+  let timer: NodeJS.Timer;
+
+  useLayoutEffect(() => {
+    timer = setInterval(() => {
+      setDot((prev) => {
+        if (prev === 3) {
+          return 1;
+        } else {
+          return prev + 1;
+        }
+      });
+    }, 500);
+
+    return () => {
+      clearInterval(timer);
+      setDot(1);
+    };
+  }, []);
 
   return (
     <SC.Wrapper isLoading={isLoading}>
-      <div style={{ width: '84%', maxWidth: '500px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <SC.LoadingText>제주어로 번역중!</SC.LoadingText>
+      <SC.WidthContainer>
+        <SC.FlexContainer>
           <SC.LoadingAnimation src={loadingAnimation} />
-        </div>
-      </div>
+          <SC.LoadingText>제주어로 번역중{'.'.repeat(dot)}</SC.LoadingText>
+        </SC.FlexContainer>
+      </SC.WidthContainer>
     </SC.Wrapper>
   );
 };
