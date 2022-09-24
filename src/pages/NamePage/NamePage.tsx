@@ -16,6 +16,7 @@ const NamePage = () => {
     removeInputElement,
     submitAction,
     realNameChange,
+    endRef,
   } = useCustomForm();
 
   return isLoading ? (
@@ -72,6 +73,10 @@ const NamePage = () => {
           </SC.SubmitButton>
         </SC.Form>
       </SC.Wrapper>
+      <div
+        // style={{ float: 'left', clear: 'both' }}
+        ref={endRef}
+      ></div>
     </main>
   );
 };

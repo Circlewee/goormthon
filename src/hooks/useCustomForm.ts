@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
@@ -33,8 +33,17 @@ const useCustomForm = () => {
 
   const firstInputWatch = customForm.watch('name.0.mean');
 
+  const endRef = useRef<HTMLDivElement>(null);
+  const scrollToBottom = () => {
+    if (!endRef.current) return;
+    endRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const addInputElement = () => {
     customFieldArray.append({ mean: '' });
+    setTimeout(() => {
+      scrollToBottom();
+    }, 0);
   };
 
   const removeInputElement = (index: number) => {
@@ -114,6 +123,7 @@ const useCustomForm = () => {
     removeInputElement,
     submitAction,
     realNameChange,
+    endRef,
   };
 };
 
