@@ -7,6 +7,7 @@ declare namespace NodeJS {
     readonly REACT_APP_SERVICE_URL: string;
     readonly REACT_APP_KAKAO_KEY: string;
     readonly REACT_APP_GOOGLE_ANALYTICS_ID: string;
+    readonly REACT_APP_THUMB_NAIL: string;
   }
 }
 

@@ -32,8 +32,7 @@ const useCreateResult = () => {
       content: {
         title: '제주일름',
         description: randomDescription(),
-        imageUrl:
-          'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b9496f0-ee0c-4acd-8138-6958d110eb31/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220920%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220920T182852Z&X-Amz-Expires=86400&X-Amz-Signature=3c60abdef8c1784c3eb9ee216614640b3ceae88901e80f0cfa0e2dcd83647cc8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject',
+        imageUrl: process.env.REACT_APP_THUMB_NAIL,
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
