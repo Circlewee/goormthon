@@ -32,7 +32,7 @@ const ResultPage = () => {
   useLayoutEffect(() => {
     const body = document.querySelector('body');
     if (!body) return;
-    body.style.lineHeight = '0';
+    body.style.lineHeight = '7px';
 
     return () => {
       body.style.lineHeight = 'normal';
@@ -70,7 +70,7 @@ const ResultPage = () => {
           <SC.BackgroundImg src={StaticLogo} index={4} alt='result page logo image' />
         </SC.ResultContainer>
         <SC.ExplanationText>
-          <span>{`${name}${type === 'name' ? '님의' : '의'} 제주일름은 ${result}예요!`}</span>
+          <span>{`${name}${type === 'name' ? '님의' : '의'} 제주일름은 ${result}입니다!`}</span>
           <span>독특하고 특별한 나만의 제주도 이름, 어떠신가요?</span>
         </SC.ExplanationText>
         <SC.ExplanationText>
@@ -103,7 +103,10 @@ const ResultPage = () => {
           <FacebookShareButton url={window.location.href}>
             <FacebookIcon size={64} round />
           </FacebookShareButton>
-          <TwitterShareButton url={window.location.href}>
+          <TwitterShareButton
+            url={window.location.href}
+            title='이름, 생일을 제주 방언으로 해석해봐요!'
+          >
             <TwitterIcon size={64} round />
           </TwitterShareButton>
           <SC.ShareButton onClick={copyUrl} color='rgba(255, 255, 255, 0.15);'>
