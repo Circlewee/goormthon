@@ -7,6 +7,7 @@ import { requestStateAtom } from 'src/atom/atom';
 import useToast from 'src/hooks/useToast';
 import getResultImages from 'src/utils/getResultImages';
 import { downloadToPNG } from 'src/utils/downloadToPNG';
+import { randomDescription } from 'src/utils/randomDescription';
 
 // TODO: 결과와 공유 로직을 분리
 const useCreateResult = () => {
@@ -30,7 +31,7 @@ const useCreateResult = () => {
       objectType: 'feed',
       content: {
         title: '제주오름',
-        description: '내 이름을 제주 방언으로 해석해보자!',
+        description: randomDescription(),
         imageUrl:
           'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b9496f0-ee0c-4acd-8138-6958d110eb31/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220920%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220920T182852Z&X-Amz-Expires=86400&X-Amz-Signature=3c60abdef8c1784c3eb9ee216614640b3ceae88901e80f0cfa0e2dcd83647cc8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject',
         link: {
