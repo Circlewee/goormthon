@@ -1,16 +1,8 @@
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
 
 import * as SC from './ResultPage.style';
-import {
-  Instagram,
-  Kakao,
-  StaticLogo,
-  CopyIcon,
-  RotateLeft,
-  GoormLogo,
-  SaveIcon,
-} from 'src/assets/svg';
+import { Instagram, Kakao, StaticLogo, CopyIcon, RotateLeft, SaveIcon } from 'src/assets/svg';
 import { useCreateResult } from 'src/hooks/useCreateResult';
 import { useResponsiveHeight } from 'src/hooks/useResponsiveHeight';
 
@@ -28,24 +20,14 @@ const ResultPage = () => {
     handleRestart,
     copyUrl,
   } = useCreateResult();
-  const [hide, setHide] = useState(false);
 
   useLayoutEffect(() => {
     const body = document.querySelector('body');
     if (!body) return;
     body.style.lineHeight = '7px';
 
-    const start = new Date('2022-09-30T00:00:00');
-    const end = new Date('2022-10-01T00:00:00');
-    const now = new Date();
-
-    if (now.getTime() >= start.getTime() && now.getTime() <= end.getTime()) {
-      setHide(true);
-    }
-
     return () => {
       body.style.lineHeight = 'normal';
-      setHide(false);
     };
   }, []);
 
@@ -151,19 +133,6 @@ const ResultPage = () => {
               방언사전
             </a>
           </SC.ExplanationText>
-          {!hide && (
-            <>
-              <a
-                href='https://9oormthon.goorm.io/'
-                target='_blank'
-                style={{ marginTop: '41px' }}
-                rel='noreferrer'
-              >
-                <GoormLogo width={104} />
-              </a>
-              <SC.LightText>powered by 9oormthon</SC.LightText>
-            </>
-          )}
         </SC.ResultFooter>
       </SC.Wrapper>
     </SC.Container>
